@@ -4,14 +4,14 @@ import "./style.scss"
 
 const Hero = () => {
   return (
-<div className='h-[600px] hero flex justify-left px-4 flex-col items-center hero'>
+<div className='md:h-[900px] h-[600px] hero flex justify-left px-4 flex-col items-center hero'>
   <div className="grid md:grid-cols-2 m-auto max-w-7xl">
 
    <div className="max-w-lg text-justify">
 
    
     <p className='bg-gray text-2xl text-left max-w-6xl mt-20 md:mt-16 md:text-4xl font-bold  text-gray-200 '>
-      Get a reliable supply of cooking gas for your household today.
+      Get Reliable Supply of Cooking Gas For your household today.
     </p>
     <p className='text-gray-200 text-left  max-w-6xl text-xl font-semibold md:text-3xl mt-10 '>
       Safe, Fast, and Efficient

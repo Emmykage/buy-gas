@@ -1,0 +1,14 @@
+.services {
+    margin-top: 30px;
+
+> div{
+    cursor: pointer;
+
+    &:hover{
+        .title{
+            color: #f6bb19;
+        }
+
+    }
+}
+}

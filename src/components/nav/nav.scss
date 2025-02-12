@@ -1,0 +1,90 @@
+nav{
+    // position: relative;
+    @media (max-width: 768px) {
+
+    }
+
+    ul{
+        display: flex;
+        transition: left 0.3s ease-in ;
+ 
+        @media (max-width: 768px) {
+            padding-top: 50px;
+            position: absolute;
+            left: 0;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            display: block;
+            background-color: rgb(31, 28, 28);
+            height: 100vh;
+      
+            &.show{
+            left: 0;
+
+
+            }
+            }
+
+            li{
+                // background-color: green;
+                position: relative;
+                ul{
+                    position: absolute;
+                    // background-color: red;
+                    // display: block;
+                    width: max-content;
+                    padding: 18px 20px;
+                    display: none;
+                    // opacity: 0;
+                    // margin-top: 20px;
+                    // transition: all 0.3s ease-in-out;
+                    // pointer-events: none;
+                    div{
+                        // background-color: purple;
+                        border-radius: 12px;
+                        // background-color: green;
+                        position: relative;
+                        margin-left: -28px;
+                        outline: blue;
+                        overflow: hidden;
+                        border: 1px solid rgb(114, 114, 114);
+
+                        padding: 12px 0;
+                        &::after {
+                            content: "";
+                            background-color: red;
+                            width: 20px;
+                            height: 20px;
+                            top: -10px;
+                            left: -10px;
+
+                        }
+                    }
+
+                    a{
+                        // background-color: yellow;
+                        line-height: 30px;
+                        padding: 12px;
+                    }
+                }
+                &:hover{
+                    ul{
+
+                        display: block;
+                        // opacity: 1;
+                        // margin-top: 0;
+                        a{
+                            &:hover{
+                                color: #f6bb19;
+                            }
+                        }
+
+                    }
+                }
+
+                }
+            
+        
+    }
+}

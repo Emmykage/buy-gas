@@ -1,0 +1,34 @@
+.servive-container {
+    img{
+        // background-color: red;
+
+    }
+ 
+
+}
+
+.services{
+    > div{
+    //    background: red;
+      
+       .collapsable{
+        position: absolute;
+        bottom: 00%;
+        width: 100%;
+        transition: all 0.1s ease-in-out;
+        height: 0px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 0;
+
+       }
+       &:hover{
+        .collapsable{
+            height: 40px;
+
+        }
+       }
+   }
+}

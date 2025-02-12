@@ -1,0 +1,18 @@
+.hero{
+    background: linear-gradient(rgba(165, 42, 42, 0.5), rgba(0, 0, 255, 0.288)), url("/background/using.avif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-position: center 10%;
+    .ant-btn{
+        background: #1c638b;
+        padding: 42px;
+        color: wheat;
+        font-size: 20px;
+        font-weight: 600;
+        border: black;
+        &:hover{
+            background-color: orange !important;
+        }
+    }
+}

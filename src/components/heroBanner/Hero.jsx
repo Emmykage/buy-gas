@@ -51,7 +51,7 @@ const ContentHero = () => {
     <div className="max-w-lg text-justify">
 
    
-    <p className='bg-gray text-2xl text-left max-w-6xl mt-20 md:mt-16 md:text-4xl font-bold  text-gray-200 '>
+    <p className='bg-gray text-2xl text-left max-w-6xl mt-0 md:mt-16 md:text-4xl font-bold  text-gray-200 '>
       Get Reliable Supply of Cooking Gas For your household today.
     </p>
     <p className='text-gray-200 text-left  max-w-6xl text-xl font-semibold md:text-3xl mt-10 '>

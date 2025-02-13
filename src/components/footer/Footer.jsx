@@ -1,8 +1,6 @@
-import { FaPhoneAlt } from 'react-icons/fa'
-import { FaHouse } from 'react-icons/fa6'
-import { IoMailSharp } from 'react-icons/io5'
+
 import { NavLink } from 'react-router-dom'
-import logo from '../../assets/images/logo/logo.png'
+
 const Footer = () => {
   return (
     <section className='border bg-white/80'>
@@ -10,41 +8,41 @@ const Footer = () => {
     <footer className='bg-gray-200 py-20 px-4'>
         <div className='m-auto max-w-7xl grid gap-10 sm:grid-cols-2 lg:grid-cols-4'>
             <div className='-mt-10'>
-                  <NavLink to={"/"} ><img src={logo} alt="logo" className='w-36 bg-red-32 block m-auto md:inline-block' /> </NavLink> 
+                  <NavLink to={"/"} ><img src={"/logo1.png"} alt="logo" className='w-36 bg-red-32 block m-auto md:inline-block' /> </NavLink> 
 
                 <p className=' text-sm font-medium text-gray-800 text-center md:text-left'>
-                ValentPharma provides comprehensive pharmaceutical solutions for businesses of all sizes across Nigeria.
-<br/>
-<br/>
-        Our team of experts is dedicated to supporting your growth by delivering high-quality raw materials, finished products, and innovative healthcare solutions while ensuring strict adherence to industry standards and regulations.</p>
+                &copy; 2025 BuyGas Inc.  Vortech Engineering. All Rights Reserved
+                </p>
 
             </div>
             <div className='text- font-medium text-gray-800 text- md:px-10'>
                 <h3 className='mb-6 text-primary font-bold text-lg text-center md:text-left'> Links</h3>
                 <ul className='text-center md:text-left'>
-                <li className='hover:text-gray-400 cursor-pointer'><NavLink to={"/"}> Home</NavLink> </li>
-                <li className='hover:text-gray-400 cursor-pointer'><NavLink to="/services"> Services</NavLink></li>
-                <li className='hover:text-gray-400 cursor-pointer'> <NavLink to={"about-us"}> About Us</NavLink></li>
-                <li className='hover:text-gray-400 cursor-pointer'><NavLink to={"contact-us"}> Contact US</NavLink></li>
+                <li className='hover:text-gray-400 cursor-pointer'><NavLink to={"/"}> Buy Gas</NavLink> </li>
+                <li className='hover:text-gray-400 cursor-pointer'><NavLink to="/services"> Delivery Mode</NavLink></li>
+
                 </ul>
                 
             </div>
             <div className='text- font-medium text-gray-800 text-center md:text-left'>
-                <h3  className=' text-primary font-bold text-lg'>Contact Us</h3>
-                <p></p>
-                <div className='flex gap-5 my-4 flex-col md:flex-row items-center'>
-                <FaHouse/> <address className='not-italic'>Plot 135 Alake Onile-Ere Crescent Gbagada Lagos</address>
+                <h3  className=' text-primary mb-6 font-bold text-lg'>Legal</h3>
+                <ul className='text-center md:text-left'>
+                <li className='hover:text-gray-400 cursor-pointer'><NavLink to={"/"}> Terms  Of Service</NavLink> </li>
+                <li className='hover:text-gray-400 cursor-pointer'><NavLink to="/services"> Privacy Policy</NavLink></li>
 
-                </div>
-                <div className='flex gap-5 my-4 items-center flex-col md:flex-row'>
-                <FaPhoneAlt/>       <a href="tel:++2347068111277">+2347068111277</a>
+                </ul>
+                
+                
+            </div>   
 
+            <div className='text- font-medium text-gray-800 text-center md:text-left'>
+                <h3  className=' text-primary mb-6 font-bold text-lg'>Company</h3>
+                <ul className='text-center md:text-left'>
+                <li className='hover:text-gray-400 cursor-pointer'><NavLink to={"/"}> Contact Us</NavLink> </li>
+                <li className='hover:text-gray-400 cursor-pointer'><NavLink to="/"> About</NavLink></li>
 
-                </div>
-                <div className='flex gap-5 my-4 items-center flex-col md:flex-row'>
-                <IoMailSharp/> <a href="mailto:support@ValentPhama.com"> support@ValentPhama.com</a>
-
-                </div>
+                </ul>
+                
                 
             </div>   
 
@@ -72,10 +70,10 @@ const Footer = () => {
 
        <ul className="text-sm my-4  text-red-500 m-auto md:justify-center flex flex-col md:flex-row max-w-4xl flex-wrap gap-3 md:gap-0">
 
-        <li className="border-r border-gray-400 px-4"> <NavLink to="/privacy-policy" class="hover:text-alt" >Privacy Policy </NavLink> </li>
-        <li className="border-r border-gray-400 px-4"> <NavLink to="/cookies-policy" class="hover:text-alt" >Cookie Policy</NavLink></li>
-        <li className="border-r border-gray-400 px-4"><NavLink to={"/modern-slavery"} class="hover:text-alt"> Modern Slavery Statement </NavLink></li>
-        <li className="border-r border-gray-400 px-4"><NavLink to={"/site-map"} class="hover:text-alt">  Site Map </NavLink></li>
+        <li className="border-r border-gray-400 px-4"> <NavLink to="/" class="hover:text-alt" >Privacy Policy </NavLink> </li>
+        <li className="border-r border-gray-400 px-4"> <NavLink to="/" class="hover:text-alt" >Cookie Policy</NavLink></li>
+        <li className="border-r border-gray-400 px-4"><NavLink to={"/"} class="hover:text-alt"> Modern Slavery Statement </NavLink></li>
+        <li className="border-r border-gray-400 px-4"><NavLink to={"/"} class="hover:text-alt">  Site Map </NavLink></li>
         <li className=" border-gray-400 px-4"><NavLink to={"/terms-of-service"} class="hover:text-alt"> Terms and Conditions</NavLink></li>
       </ul> 
     </div>

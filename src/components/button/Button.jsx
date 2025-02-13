@@ -5,7 +5,8 @@ import "./style.scss"
 const AppButton = ({
     children,
     onClick,
-    className
+    className,
+    style
 }) => {
   return (
         <Button 
@@ -14,9 +15,14 @@ const AppButton = ({
             size={"larger"}
             style={{
                 marginTop: 20,
-                width: "100%"
+                width: "100%",
+                // maxWidth: "50%",
+                margin: "20px auto" ,
+                display: "flex",
+                ...style
             }}
-        >
+
+      >
          {children}
 
         </Button>

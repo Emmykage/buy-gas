@@ -7,6 +7,7 @@ import experts from '../../assets/images/home/integrated-supply.webp'
 import CTA from '../../components/CTA/CAT'
 import { useLocation } from 'react-router-dom'
 import Hero from '../../components/heroBanner/Hero'
+import FooterInfo from '../../components/footer-info/FooterInfo'
 
 
 const Home = () => {
@@ -28,7 +29,7 @@ const Home = () => {
             <section  className='md:py-20 py-0 px-4 my-6 bg-gray-100/20'>
 
             <h2 className='text-3xl text-center font-semibold text-gray-700'>
-                You Can Count On US
+                Why Choose US
             </h2>
 
                         <div className='m-auto max-w-7xl flex-col md:flex-row flex gap-5 my-20 '>
@@ -101,8 +102,8 @@ const Home = () => {
             </div>
             </div>
         </section> */}
-        <CTA  buttonText={"Discover Our Services"} link="/services" title={"Get Stared Today"} text={"Reach Out for a Free Consultation and Discover How ValentPharma Can Help Your Business Grow."}/>
-
+        <CTA  buttonText={"Get Started"} link="/services" title={"Get Stared Today"} />
+        <FooterInfo/>
     </div>
 
   )

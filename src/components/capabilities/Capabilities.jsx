@@ -1,4 +1,3 @@
-import React from 'react'
 import clock from '../../assets/images/svgs/rewind-time.svg'
 import file from '../../assets/images/svgs/file.svg'
 import list from '../../assets/images/svgs/list.svg'

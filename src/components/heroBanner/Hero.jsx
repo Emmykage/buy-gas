@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import AppButton from "../button/Button"
 import Login from "../login/Login"
 import "./style.scss"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { useState } from "react"
 import { SET_LOGIN } from "../../redux/app"
 
@@ -43,7 +43,7 @@ const ContentHero = () => {
   const handleSubmit = () => {
     if(phone.trim() !== ""){
       dispatch(SET_LOGIN(phone))
-      navigate("/auth")
+      navigate("/dashboard")
     }
 
   }

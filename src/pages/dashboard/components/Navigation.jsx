@@ -12,13 +12,16 @@ const Navigation = () => {
                 <img src="/logo.png" alt="" className='w-40 h-24' />
             </NavLink>
 
-            <div className='text-alt font-medium'>
+            <div className='text-alt  font-medium'>
                 <ul className='hidden md:flex  gap-4'>
+                <li>
+                        <NavLink className={"hover:text-primary"} to={"#"}>Make Order</NavLink>
+                    </li>   
                     <li>
-                        <span>Refill History</span>
+                        <NavLink className={"hover:text-primary"} to={"#"}>Refill History</NavLink>
                     </li>
                     <li>
-                        <span>Contact Us</span>
+                        <NavLink className={"hover:text-primary"} to={"#"}>Contact Us</NavLink>
                     </li>
                     
 

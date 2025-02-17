@@ -52,8 +52,14 @@ const Dashboard = () => {
         </div>
         </div>
 
+        <div>
+            <p className='text-gray-600 font-medium'>
+                Purchase History
+            </p>
+        </div>
 
-        <div className='bg-red- flex gap-4 border shadow border-gray-200/30 overflow-x-auto rounded px-5 py-6'>
+
+        <div className='flex gap-4  shadow border-gray-200/30 overflow-x-auto rounded px-5 py-6'>
             <div className='w-72 gap-4 p-3 py-3 md:py-8 shrink-0 flex items-center bg-gray-50 border border-gray-200 rounded-2xl'>
                 <div className='bg-gray-100 border rounded p-2 shadow border-gray-300'>
                 <GiCampCookingPot className='text-primary'/>

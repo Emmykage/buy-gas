@@ -7,6 +7,8 @@ const ConfirmOrder = () => {
     const navigate = useNavigate()
   return (
     <>
+        <div className='bg-red container m-auto  h-screen'>
+
     <Navigation/>
 
     <div  className='bg-green-300 w-full p-3 '>
@@ -61,6 +63,7 @@ const ConfirmOrder = () => {
         </div>
     </div>
 
+</div>
     </>
   )
 }

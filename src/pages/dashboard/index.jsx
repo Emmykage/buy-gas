@@ -27,26 +27,32 @@ const Dashboard = () => {
             <div>
                     <h2>Quick Purchase</h2>
                 </div>
+
+                <div>
+                    <button onClick={() => navigate("/dashboard/payment-form")} className='py-5 bg-alt text-white max-w-lg block w-full rounded-2xl font-semibold my-4'>
+                        Buy Gas
+                    </button>
+                </div>
         <div className='bg-red- overflow-x-auto flex gap-4 py-6'>
-            <div onClick={() => navigate("/dashboard/payment-form")} className='w-56 p-10 flex shrink-0 cursor-pointer flex-col justify-center items-center bg-gray-50 border border-gray-200 rounded-2xl'>
+            <div onClick={() => navigate("/dashboard/payment-form?kg=5")} className='w-56 p-10 flex shrink-0 cursor-pointer flex-col justify-center items-center bg-gray-50 border border-gray-200 rounded-2xl'>
                 <GiCampCookingPot />
                 <p className='text-2xl font-medium'>5Kg</p>
 
 
             </div>
-            <div className='w-56 p-10 shrink-0 flex cursor-pointer flex-col justify-center items-center bg-gray-50 border border-gray-200 rounded-2xl'>
+            <div onClick={() => navigate("/dashboard/payment-form?kg=12.5")} className='w-56 p-10 shrink-0 flex cursor-pointer flex-col justify-center items-center bg-gray-50 border border-gray-200 rounded-2xl'>
                 <GiCampCookingPot />
                 <p className='text-2xl font-medium'>12Kg</p>
             </div>
-            <div className='w-56 p-10 flex shrink-0 cursor-pointer flex-col justify-center items-center bg-gray-50 border border-gray-200 rounded-2xl'>
+            <div onClick={() => navigate("/dashboard/payment-form?kg=30")} className='w-56 p-10 flex shrink-0 cursor-pointer flex-col justify-center items-center bg-gray-50 border border-gray-200 rounded-2xl'>
                 <GiCampCookingPot className='text-primary'/>
                 <p className='text-2xl shrink-0 font-medium'>30kg</p>
             </div>
-            <div className='w-56 p-10 shrink-0 flex cursor-pointer flex-col justify-center items-center bg-gray-50 border border-gray-200 rounded-2xl'>
+            <div onClick={() => navigate("/dashboard/payment-form?kg=7")} className='w-56 p-10 shrink-0 flex cursor-pointer flex-col justify-center items-center bg-gray-50 border border-gray-200 rounded-2xl'>
                 <GiCampCookingPot />
                 <p className='text-2xl font-medium'>7Kg</p>
             </div>
-            <div className='w-56 p-10 shrink-0 flex cursor-pointer flex-col justify-center items-center bg-gray-50 border border-gray-200 rounded-2xl'>
+            <div onClick={() => navigate("/dashboard/payment-form?kg=12")} className='w-56 p-10 shrink-0 flex cursor-pointer flex-col justify-center items-center bg-gray-50 border border-gray-200 rounded-2xl'>
                 <GiCampCookingPot />
                 <p className='text-2xl font-medium'>12Kg</p>
             </div>

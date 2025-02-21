@@ -21,7 +21,7 @@ const Navigation = () => {
                         <NavLink className={"hover:text-primary"} to={"/dashboard/history"}>Refill History</NavLink>
                     </li>
                     <li>
-                        <NavLink className={"hover:text-primary"} to={"/contact-us"}>Contact Us</NavLink>
+                        <NavLink className={"hover:text-primary"} to={"/dashboard/contact-us"}>Contact Us</NavLink>
                     </li>
                     
 

@@ -8,6 +8,7 @@ import PaymentForm from './pages/dashboard/payments/PaymentForm'
 import PaymentDetails from './pages/dashboard/paymentDetails/PaymentDetails'
 import ConfirmOrder from './pages/dashboard/confirmOrder/ConfirmOrder'
 import History from './pages/dashboard/history/History'
+import Contact from './pages/dashboard/contact'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
 
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/dashboard/history' element={<History/>}/>
+        <Route path='/dashboard/contact-us' element={<Contact/>}/>
         <Route path='/dashboard/payment-form' element={<PaymentForm/>}/>
         <Route path='/dashboard/payment-details' element={<PaymentDetails/>}/>
         <Route path='/dashboard/confirm-payments' element={<ConfirmOrder/>}/>

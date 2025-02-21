@@ -1,0 +1,19 @@
+.ant-form-item{
+    width: 100%;
+
+    
+    .ant-col {
+        width: 100% !important;
+
+        display: block !important;
+        input{
+            padding: 6px !important;
+            background: none;
+            // width: 100%;
+        }
+        .ant-input-number{
+            width: 100%;
+            padding: 4px;
+        }
+    }
+}

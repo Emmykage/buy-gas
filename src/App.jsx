@@ -4,6 +4,10 @@ import Home from './pages/home'
 import Footer from './components/footer/Footer'
 import Login from './components/login/Login'
 import Dashboard from './pages/dashboard'
+import PaymentForm from './pages/dashboard/payments/PaymentForm'
+import PaymentDetails from './pages/dashboard/paymentDetails/PaymentDetails'
+import ConfirmOrder from './pages/dashboard/confirmOrder/ConfirmOrder'
+
 
 function App() {
 
@@ -16,9 +20,11 @@ function App() {
 
         </Route>
 
-        <Route path='/dashboard' element={<Dashboard/>}>
+        <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/dashboard/payment-form' element={<PaymentForm/>}/>
+        <Route path='/dashboard/payment-details' element={<PaymentDetails/>}/>
+        <Route path='/dashboard/confirm-payments' element={<ConfirmOrder/>}/>
 
-        </Route>
       </Routes>
       <Footer/>
       

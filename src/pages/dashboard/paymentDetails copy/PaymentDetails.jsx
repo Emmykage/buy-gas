@@ -3,12 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { nairaFormat } from '../../../utils/nairaFormat'
 import Navigation from '../components/navigation/Navigation'
 
-const ConfirmOrder = () => {
+const PaymentDetails = () => {
     const navigate = useNavigate()
   return (
     <>
-        <div className='bg-red container m-auto  h-screen'>
-
     <Navigation/>
 
     <div  className='bg-green-300 w-full p-3 '>
@@ -26,10 +24,6 @@ const ConfirmOrder = () => {
             <div className='flex gap-5 my-3'>
                 <p className='flex-1 font-medium text-gray-700'>Kg:       </p>
                 <p className='flex-1 text-gray-800 font-semibold'>12.5k</p>
-            </div>
-            <div className='flex gap-5 my-3'>
-                <p className='flex-1 font-medium text-gray-700'>Phone:       </p>
-                <p className='flex-1 text-gray-800 font-semibold'>07064334160</p>
             </div>
             <div className='flex gap-5  my-3'>
                 <p className='flex-1 font-medium text-gray-700'>Amount:       </p>
@@ -55,17 +49,11 @@ const ConfirmOrder = () => {
                     Pay with Card
                 </button>
             </div>
-            <div>
-                <p className='text-gray-700 font-medium'>
-                    Our Agents will get in touch 
-                </p>
-            </div>
         </div>
     </div>
 
-</div>
     </>
   )
 }
 
-export default ConfirmOrder
+export default PaymentDetails

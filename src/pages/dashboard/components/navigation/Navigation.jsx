@@ -15,13 +15,13 @@ const Navigation = () => {
             <div className='text-alt  font-medium'>
                 <ul className='hidden md:flex  gap-4'>
                 <li>
-                        <NavLink className={"hover:text-primary"} to={"#"}>Make Order</NavLink>
+                        <NavLink className={"hover:text-primary"} to={"/dashboard"}>Make Order</NavLink>
                     </li>   
                     <li>
-                        <NavLink className={"hover:text-primary"} to={"#"}>Refill History</NavLink>
+                        <NavLink className={"hover:text-primary"} to={"/dashboard/history"}>Refill History</NavLink>
                     </li>
                     <li>
-                        <NavLink className={"hover:text-primary"} to={"#"}>Contact Us</NavLink>
+                        <NavLink className={"hover:text-primary"} to={"/contact-us"}>Contact Us</NavLink>
                     </li>
                     
 

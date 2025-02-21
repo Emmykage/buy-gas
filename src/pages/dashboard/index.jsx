@@ -1,5 +1,5 @@
 import React from 'react'
-import Navigation from './components/Navigation'
+import Navigation from './components/navigation/Navigation'
 import { GiCampCookingPot } from 'react-icons/gi'
 import { useNavigate } from 'react-router-dom'
 
@@ -25,7 +25,7 @@ const Dashboard = () => {
 
 
             <div>
-                    <h2>Quick Purchase</h2>
+                    <h2 className='text-primary font-semibold'>Quick Purchase</h2>
                 </div>
 
                 <div>

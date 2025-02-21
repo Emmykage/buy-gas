@@ -13,13 +13,18 @@ import {
 
 } from 'antd';
 import FormInput from "../../../components/input/Input";
-import Navigation from "../components/Navigation";
-import { useNavigate } from "react-router-dom";
+import Navigation from "../components/navigation/Navigation";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 
 const PaymentForm = () => {
     const navigate = useNavigate()
+    const [query] = useSearchParams()
     const [form] = Form.useForm();
+
+    const kg = query.get("kg")
+
+    console.log(kg)
 
 
   return (
@@ -36,7 +41,7 @@ const PaymentForm = () => {
     }
   initialValues={{
     full_name: "",
-    kg: "",
+    kg: kg ?? "",
     amount: "",
     address: "",
     phone_no: "+234706123456"
@@ -47,7 +52,7 @@ const PaymentForm = () => {
   <FormInput label="Full Name" required name="full_name" type="text" />
   <FormInput label="Address" required={true} name="address" type="text" />
   <FormInput label="Phone Number" required name="phone_no" disabled type="text" />
-  <FormInput label="Amount in Kg" required name="kg" type="number" />
+  <FormInput label="Amount in Kg" required name="kg" disabled={!!kg} type="number" />
 
   <Form.Item>
     <Button htmlType="submit">Make Order</Button>

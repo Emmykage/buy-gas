@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { nairaFormat } from '../../../utils/nairaFormat'
-import Navigation from '../components/Navigation'
+import Navigation from '../components/navigation/Navigation'
 
 const PaymentDetails = () => {
     const navigate = useNavigate()

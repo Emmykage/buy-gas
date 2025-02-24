@@ -13,6 +13,8 @@ import AdminDashboard from './layouts/AdminDashboard'
 import AdminHome from './pages/admin/Home'
 import AdminLogin from './pages/auth/AdminLogin'
 import MainDashboard from './layouts/MainDashboard'
+import AdminOrder from './pages/admin/Order'
+import AdminUser from './pages/admin/Users'
 
 
 function App() {
@@ -39,7 +41,9 @@ function App() {
         </Route>
 
         <Route path='/admin' element={<AdminDashboard/>}>
-          <Route path='' element={<AdminHome/>}/>
+        <Route path='home' element={<AdminHome/>}/>
+        <Route path='orders' element={<AdminOrder/>}/>
+        <Route path='users' element={<AdminUser/>}/>
 
         </Route>
 

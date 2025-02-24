@@ -24,14 +24,16 @@ const Dashboard = () => {
             <div className='my-7'>
 
 
-            <div>
-                    <h2 className='text-primary font-semibold'>Quick Purchase</h2>
-                </div>
+  
 
                 <div>
                     <button onClick={() => navigate("/dashboard/payment-form")} className='py-5 bg-alt text-white max-w-lg block w-full rounded-2xl font-semibold my-4'>
                         Buy Gas
                     </button>
+                </div>
+
+                <div>
+                    <h2 className='text-primary font-semibold'>Quick Purchase</h2>
                 </div>
         <div className='bg-red- overflow-x-auto flex gap-4 py-6'>
             <div onClick={() => navigate("/dashboard/payment-form?kg=5")} className='w-56 p-10 flex shrink-0 cursor-pointer flex-col justify-center items-center bg-gray-50 border border-gray-200 rounded-2xl'>

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TiThMenuOutline } from 'react-icons/ti'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 const Navigation = () => {
     const navigate = useNavigate()
+    const [show, setShow] = useState(false)
   return (
     <header className='py-5 px-4 border-b border-gray-500'>
 
@@ -13,24 +14,26 @@ const Navigation = () => {
             </NavLink>
 
             <div className='text-alt  font-medium'>
-                <ul className='hidden md:flex  gap-4'>
-                <li>
-                        <NavLink className={"hover:text-primary"} to={"/dashboard"}>Make Order</NavLink>
-                    </li>   
-                    <li>
-                        <NavLink className={"hover:text-primary"} to={"/dashboard/history"}>Refill History</NavLink>
-                    </li>
-                    <li>
-                        <NavLink className={"hover:text-primary"} to={"/dashboard/contact-us"}>Contact Us</NavLink>
-                    </li>
-                    
+                <ul className={`${show ? "right-0"  :  "right-full"} md:flex absolute w-full bg-blue-50 md:bg-transparent  top-0 h-screen md:h-auto pt-10 md:pt-0 px-4 md:static transition-all duration-300 ease-in-out gap-4`}>
+                    <TiThMenuOutline onClick={() => setShow(prev => !prev)} className='text-3xl text-primary md:hidden'/>
 
-                </ul>
-            </div>
+                    <li className='mt-10 md:mt-0'>
+                            <NavLink className={"hover:text-primary"} to={"/dashboard"}>Make Order</NavLink>
+                        </li>   
+                        <li className='mt-4 md:mt-0'>
+                            <NavLink className={"hover:text-primary"} to={"/dashboard/history"}>Refill History</NavLink>
+                        </li>
+                        <li className='mt-4 md:mt-0'>
+                            <NavLink className={"hover:text-primary"} to={"/dashboard/contact-us"}>Contact Us</NavLink>
+                        </li>
+                        
+
+                    </ul>
+                </div>
 
 
             <span className='md:hidden'>
-            <TiThMenuOutline className='text-3xl text-primary'/>
+            <TiThMenuOutline onClick={() => setShow(prev => !prev)} className='text-3xl text-primary'/>
             </span>
         </div>
         

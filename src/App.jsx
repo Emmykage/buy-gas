@@ -9,6 +9,10 @@ import PaymentDetails from './pages/dashboard/paymentDetails/PaymentDetails'
 import ConfirmOrder from './pages/dashboard/confirmOrder/ConfirmOrder'
 import History from './pages/dashboard/history/History'
 import Contact from './pages/dashboard/contact'
+import AdminDashboard from './layouts/AdminDashboard'
+import AdminHome from './pages/admin/Home'
+import AdminLogin from './pages/auth/AdminLogin'
+import MainDashboard from './layouts/MainDashboard'
 
 
 function App() {
@@ -22,15 +26,26 @@ function App() {
 
         </Route>
 
-        <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='/dashboard/history' element={<History/>}/>
-        <Route path='/dashboard/contact-us' element={<Contact/>}/>
-        <Route path='/dashboard/payment-form' element={<PaymentForm/>}/>
-        <Route path='/dashboard/payment-details' element={<PaymentDetails/>}/>
-        <Route path='/dashboard/confirm-payments' element={<ConfirmOrder/>}/>
+        <Route path='/dashboard' element={<MainDashboard/>}>        
+          <Route path='' element={<Dashboard/>}/>
+          <Route path='history' element={<History/>}/>
+          <Route path='contact-us' element={<Contact/>}/>
+          <Route path='payment-form' element={<PaymentForm/>}/>
+          <Route path='payment-details' element={<PaymentDetails/>}/>
+          <Route path='confirm-payments' element={<ConfirmOrder/>}/>
+
+        
+        
+        </Route>
+
+        <Route path='/admin' element={<AdminDashboard/>}>
+          <Route path='' element={<AdminHome/>}/>
+
+        </Route>
+
+        <Route path='/auth/admin-login' element={<AdminLogin/>}/>
 
       </Routes>
-      <Footer/>
       
     </>
   )

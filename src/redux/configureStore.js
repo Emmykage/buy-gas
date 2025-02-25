@@ -1,11 +1,12 @@
 import { applyMiddleware, combineReducers, configureStore } from "@reduxjs/toolkit";
-import { AppReducer, AuthReducer } from ".";
+import { AppReducer, AuthReducer, OrderRducer } from ".";
 import { thunk } from "redux-thunk";
 import logger from "redux-logger";
 
 const rootReducer = combineReducers({
     auth: AuthReducer,
-    app: AppReducer
+    app: AppReducer,
+    order: OrderRducer
 
 })
 

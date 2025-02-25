@@ -9,6 +9,7 @@ import { SET_LOGIN } from "../../redux/app"
 import { Button, Checkbox, Form, Input, Select } from "antd"
 import FormInput from "../input/Input"
 import OrderForm from "../orderForm/OrderForm"
+import { addUser } from "../../redux/auth"
 
 const Hero = () => {
 
@@ -44,15 +45,13 @@ const Hero = () => {
 
 const ContentHero = () => {
   const dispatch = useDispatch()
-  const [phone, setPhone] = useState("")
   const navigate = useNavigate()
 
-  const handleSubmit = ({phone}) => {
-    console.log(phone)
-    if(phone.trim() !== ""){
-      dispatch(SET_LOGIN(phone))
+  const handleSubmit = (values) => {
+      dispatch(SET_LOGIN(values))
+      dispatch(addUser(values))
+
       navigate("/dashboard")
-    }
 
   }
   return(

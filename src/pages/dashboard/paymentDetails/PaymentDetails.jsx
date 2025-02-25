@@ -2,9 +2,25 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { nairaFormat } from '../../../utils/nairaFormat'
 import Navigation from '../components/navigation/Navigation'
+import { useSelector } from 'react-redux'
+import { PaystackButton } from 'react-paystack'
 
 const PaymentDetails = () => {
     const navigate = useNavigate()
+    const {user} = useSelector(state => state.auth)
+
+    const componentProps = {
+        email: "emmiemenz@gmail.com",
+        amount: 1600 * 100,
+      
+        publicKey: "pk_test_f833f603b86e23ffa37f40f2e90056de9b928bf7",
+        text: 'Pay With Card',
+        onSuccess: () => {
+            navigate("/dashboard/confirm-payments")
+            },
+        // onClose: () => alert('Are you sure'),
+      }; 
+    
   return (
     <>
         <div className='bg-red container m-auto  h-screen'>
@@ -49,11 +65,10 @@ const PaymentDetails = () => {
 
 
             <div>
-                <button className='bg-alt text-white text-sm rounded-2xl w-full my-10 p-4 block m-auto' onClick={() => {
-                    navigate("/dashboard/confirm-payments")
-                }}>
-                    Pay with Card
-                </button>
+               
+
+                <PaystackButton  className='bg-alt text-white text-sm rounded-2xl w-full my-10 p-4 block m-auto'  {...componentProps}/>
+
             </div>
           
         </div>

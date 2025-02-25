@@ -15,16 +15,18 @@ import {
 import FormInput from "../../../components/input/Input";
 import Navigation from "../components/navigation/Navigation";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { nairaFormat } from "../../../utils/nairaFormat";
 
 
 const PaymentForm = () => {
     const navigate = useNavigate()
     const [query] = useSearchParams()
     const [form] = Form.useForm();
+    const [amount, setAmount] = useState()
 
     const kg = query.get("kg")
+    const rate = 1300
 
-    console.log(kg)
 
 
   return (
@@ -52,7 +54,15 @@ const PaymentForm = () => {
   <FormInput label="Full Name" required name="full_name" type="text" />
   <FormInput label="Address" required={true} name="address" type="text" />
   <FormInput label="Phone Number" required name="phone_no" disabled type="text" />
-  <FormInput label="Amount in Kg" required name="kg" disabled={!!kg} type="number" />
+  <FormInput
+    onChange={() => setAmount(prev => prev * rate)}
+  label="Amount in Kg" required name="kg" disabled={!!kg} type="number" />
+
+  <p>Rate = {rate}</p>
+  @
+  <span>
+    {nairaFormat(amount)}
+  </span>
 
   <Form.Item>
     <Button htmlType="submit">Make Order</Button>

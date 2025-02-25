@@ -3,9 +3,11 @@ import Navigation from './components/navigation/Navigation'
 import { GiCampCookingPot } from 'react-icons/gi'
 import { useNavigate } from 'react-router-dom'
 import OrderForm from '../../components/orderForm/OrderForm'
+import { useSelector } from 'react-redux'
 
 const Dashboard = () => {
     const navigate = useNavigate()
+    const {user} = useSelector(state => state.auth)
   return (
     <div className='bg-red container m-auto  min-h-screen'>
         <Navigation/>
@@ -15,7 +17,7 @@ const Dashboard = () => {
 
                 
             <div className='mt-10'>
-            <h3 className='md:text-3xl text-xl font-semibold'>Hello, 07064334158</h3>
+            <h3 className='md:text-3xl text-xl font-semibold'>Hello, {user?.phone}</h3>
             <p className='font-medium text-gray-600'>Get your gas refilled today</p>
         </div>
 

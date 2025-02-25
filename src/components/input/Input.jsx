@@ -66,6 +66,8 @@ const FormInput = ({
            type=== "select" ?
 
            <Select
+           disabled={disabled}
+
            options={options}
            placeholder={placeHolder}
 

@@ -17,7 +17,7 @@ const OrderForm = () => {
     const rate = 1300
     const dispatch = useDispatch()
 
-    console.log(amount)
+    console.log(user)
 
 
 
@@ -36,14 +36,25 @@ const OrderForm = () => {
     kg: kg ?? "",
     amount: "",
     address: "",
-    phone_no: "+234706123456"
+    location: user?.location,
+    phone_no: user?.phone
   }}
   layout="vertical"
   style={{ maxWidth: "100%" }}
->
+>  <FormInput label="Phone Number" required name="phone_no" disabled type="text" />
+<FormInput
+    required={true}
+    name={"location"}
+    disabled={!!user?.location}
+    placeHolder={"Select Location"} type={"select"} options={[{label: "wuse", value: "wuse"},
+      {label: "maitama", value: "maitama"},
+      {label: "Apo", value: "apo"},
+      {label: "Gwarimpa", value: "gwarimpa"},
+      {label: "Asokoro", value: "asokoro"}
+    ]}/>
+
   {/* <FormInput label="Full Name" required name="full_name" type="text" /> */}
   <FormInput label="Address" required={true} name="address" type="text" />
-  <FormInput label="Phone Number" required name="phone_no" disabled type="text" />
   <FormInput label="Amount in Kg" 
    onChange={(value) => setAmount(value * rate)}
    required name="kg" disabled={!!kg} type="number" />

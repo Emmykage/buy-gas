@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { userLogin, userLogout, userProfile, userSignUp } from "../actions/auth"
+import { stringify } from "postcss"
 
 const initialState = {
     user: null,
@@ -14,13 +15,14 @@ const AuthSlice = createSlice({
         resetUser: (state) =>  {
             return{
                 ...state,
-                user: {},
+                user: JSON.parse(localStorage.getItem("buy-gas"))
 
 
             }
         }
         , 
         addUser: (state, action) =>  {
+            localStorage.setItem("buy-gas", JSON.stringify(action.payload))
             return{
                 ...state,
                 user: action.payload,

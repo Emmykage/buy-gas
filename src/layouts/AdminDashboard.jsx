@@ -13,7 +13,7 @@ const AdminDashboard = props => {
 
   return (
     <div className='flex'>
-        <aside className={`${showMenu ? "w-0" :  "md:w-80 w-20"} bg-red-100 transition-all duration-200 ease-in-out h-screen border overflow-hidden border-alt/40`}>
+        <aside className={`${showMenu ? "w-0" :  "md:w-80 w-20"} shrink-0 transition-all duration-200 ease-in-out h-screen border overflow-hidden border-alt/40`}>
 
             <ul className='px-4 mt-20'>
                 <li className='rounded  my-2 font-medium cursor-pointer'>
@@ -35,7 +35,7 @@ const AdminDashboard = props => {
             </aside>
 
 
-        <div className='flex-1'>
+        <div className='w-full bg-gray-100'>
             <header className='bg-alt/90 text-white py-8 md:px-10 px-4 flex justify-between'>
 
                 <span className={`${showMenu && "z-50 text-white"} `} onClick={() => setShowMenu(prev => !prev)}>
@@ -51,7 +51,7 @@ const AdminDashboard = props => {
                     <span className='font-medium'>Account Admin</span>
                 </div>
             </header>
-            <div className='px-10 py-10'>
+            <div className='md:px-10 py-10 block'>
             <Outlet/>
 
             </div>

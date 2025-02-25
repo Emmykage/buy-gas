@@ -33,7 +33,7 @@ const Navigation = () => {
 
 
             <span className='md:hidden'>
-            <TiThMenuOutline onClick={() => setShow(prev => !prev)} className='text-3xl text-primary'/>
+            <TiThMenuOutline onClick={() => setShow(prev => !prev)} className='text-3xl text-alt'/>
             </span>
         </div>
         

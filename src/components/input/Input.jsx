@@ -8,6 +8,7 @@ import {
   Form,
   Input,
   InputNumber,
+  Select,
   
 } from 'antd';
 // const { RangePicker } = DatePicker;
@@ -24,7 +25,9 @@ const FormInput = ({
     onChange,
     disabled,
     name,
+    options,
     defaultValue,
+    placeHolder,
     required=false
 }) => {
   return (
@@ -45,12 +48,7 @@ const FormInput = ({
     
         
             <InputNumber 
-            rules={[
-                {
-                    required:{required},
-                    message: 'Please input!',
-                },
-            ]}            disabled={disabled}
+           disabled={disabled}
             onChange={onChange}/>
 
             : 
@@ -65,10 +63,22 @@ const FormInput = ({
 
            : 
 
+           type=== "select" ?
+
+           <Select
+           options={options}
+           placeholder={placeHolder}
+
+           >
+         </Select>
+         :
+
 <Input
             disabled={disabled}
             onChange={onChange}
            defaultValue={defaultValue}
+           placeholder={placeHolder}
+
 
              />
 

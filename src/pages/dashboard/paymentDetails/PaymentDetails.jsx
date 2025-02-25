@@ -18,28 +18,28 @@ const PaymentDetails = () => {
 
     </div>
     <div className='m-auto bg--200 max-w-4xl my-10'>
-        <div className='max-w-2xl m-auto border rounded text-center overflow-hidden shadow p-5'>
+        <div className='max-w-lg m-auto border border-gray-500/40 bg-gray-50 rounded text-center overflow-hidden shadow p-5'>
             <div className='flex gap-5 my-3'>
                 <p className='flex-1 font-medium text-gray-700'>Name:       </p>
                 <p className='flex-1 text-gray-800 font-semibold'>Jon Christopher</p>
             </div>
-            <div className='flex gap-5 my-3'>
+            <div className='flex gap-5 border-b border-b-gray-300 my-3'>
                 <p className='flex-1 font-medium text-gray-700'>Kg:       </p>
                 <p className='flex-1 text-gray-800 font-semibold'>12.5k</p>
             </div>
-            <div className='flex gap-5 my-3'>
+            <div className='flex gap-5 border-b border-b-gray-300 py-4 my-3'>
                 <p className='flex-1 font-medium text-gray-700'>Phone Number:       </p>
                 <p className='flex-1 text-gray-800 font-semibold'>07064334160</p>
             </div>
-            <div className='flex gap-5  my-3'>
+            <div className='flex gap-5  border-b border-b-gray-300 py-4 my-3'>
                 <p className='flex-1 font-medium text-gray-700'>Amount:       </p>
                 <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(16000)}</p>
             </div>
-            <div className='flex gap-5 my-3'>
+            <div className='flex gap-5 border-b border-b-gray-300 py-4 my-3'>
                 <p className='flex-1 font-medium text-gray-700'>Delivery:       </p>
                 <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(2000)}</p>
             </div>
-            <div className='flex gap-5'>
+            <div className='flex gap-5  border-b border-b-gray-300 py-4'>
                 <p className='flex-1 font-medium text-gray-700'>Net Total:       </p>
                 <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(18000)}</p>
             </div>

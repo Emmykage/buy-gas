@@ -2,11 +2,12 @@ import React from 'react'
 import Navigation from './components/navigation/Navigation'
 import { GiCampCookingPot } from 'react-icons/gi'
 import { useNavigate } from 'react-router-dom'
+import OrderForm from '../../components/orderForm/OrderForm'
 
 const Dashboard = () => {
     const navigate = useNavigate()
   return (
-    <div className='bg-red container m-auto  h-screen'>
+    <div className='bg-red container m-auto  min-h-screen'>
         <Navigation/>
         <div className='px-4'>
 
@@ -26,10 +27,12 @@ const Dashboard = () => {
 
   
 
-                <div>
-                    <button onClick={() => navigate("/dashboard/payment-form")} className='py-5 bg-alt text-white max-w-lg block w-full rounded-2xl font-semibold my-4'>
+                <div className='max-w-5xl'>
+                    {/* <button onClick={() => navigate("/dashboard/payment-form")} className='py-5 bg-alt text-white max-w-lg block w-full rounded-2xl font-semibold my-4'>
                         Buy Gas
-                    </button>
+                    </button> */}
+
+                    <OrderForm/>
                 </div>
 
                 <div>

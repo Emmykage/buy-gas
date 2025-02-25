@@ -6,7 +6,8 @@ const AppButton = ({
     children,
     onClick,
     className,
-    style
+    style,
+    htmlType
 }) => {
   return (
         <Button 
@@ -16,11 +17,11 @@ const AppButton = ({
             style={{
                 marginTop: 20,
                 width: "100%",
-                // maxWidth: "50%",
                 margin: "20px auto" ,
                 display: "flex",
                 ...style
             }}
+            htmlType={htmlType}
 
       >
          {children}

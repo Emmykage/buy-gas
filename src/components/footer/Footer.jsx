@@ -6,7 +6,7 @@ const Footer = () => {
     <section className='border bg-white/80'>
 
     <footer className='bg-gray-200 py-20 px-4'>
-        <div className='m-auto max-w-7xl grid gap-10 sm:grid-cols-2 lg:grid-cols-4'>
+        <div className='m-auto max-w-7xl grid gap-10 sm:grid-cols-2 lg:grid-cols-5'>
             <div className='-mt-10'>
                   <NavLink to={"/"} ><img src={"/logo1.png"} alt="logo" className='w-36 bg-red-32 block m-auto md:inline-block' /> </NavLink> 
 
@@ -16,7 +16,7 @@ const Footer = () => {
 
             </div>
             <div className='text- font-medium text-gray-800 text- md:px-10'>
-                <h3 className='mb-6 text-primary font-bold text-lg text-center md:text-left'> Links</h3>
+                <h3 className='mb-6 text-alt font-bold text-lg text-center md:text-left'> Links</h3>
                 <ul className='text-center md:text-left'>
                 <li className='hover:text-gray-400 cursor-pointer'><NavLink to={"/"}> Buy Gas</NavLink> </li>
                 <li className='hover:text-gray-400 cursor-pointer'><NavLink to="/services"> Delivery Mode</NavLink></li>
@@ -25,7 +25,7 @@ const Footer = () => {
                 
             </div>
             <div className='text- font-medium text-gray-800 text-center md:text-left'>
-                <h3  className=' text-primary mb-6 font-bold text-lg'>Legal</h3>
+                <h3  className=' text-alt mb-6 font-bold text-lg'>Legal</h3>
                 <ul className='text-center md:text-left'>
                 <li className='hover:text-gray-400 cursor-pointer'><NavLink to={"/"}> Terms  Of Service</NavLink> </li>
                 <li className='hover:text-gray-400 cursor-pointer'><NavLink to="/services"> Privacy Policy</NavLink></li>
@@ -36,7 +36,7 @@ const Footer = () => {
             </div>   
 
             <div className='text- font-medium text-gray-800 text-center md:text-left'>
-                <h3  className=' text-primary mb-6 font-bold text-lg'>Company</h3>
+                <h3  className=' text-alt mb-6 font-bold text-lg'>Company</h3>
                 <ul className='text-center md:text-left'>
                 <li className='hover:text-gray-400 cursor-pointer'><NavLink to={"/"}> Contact Us</NavLink> </li>
                 <li className='hover:text-gray-400 cursor-pointer'><NavLink to="/"> About</NavLink></li>
@@ -47,7 +47,7 @@ const Footer = () => {
             </div>   
 
             <div className='social-link font-medium text-gray-800'>
-              <h5 className='text-primary font-bold text-lg text-center md:text-left'>
+              <h5 className='text-alt font-bold text-lg text-center md:text-left'>
                 Socials
               </h5>
               {/* <div className='flex gap-6 items-center my-6 justify-center md:justify-start' >

@@ -49,7 +49,7 @@ const ConfirmOrder = () => {
             </button>
 
         </div>
-        <div ref={contentRef} className='max-w-2xl m-auto md:border-l rounded text-center overflow-hidden shadow p-5'>
+        <div ref={contentRef} className='max-w-2xl m-auto md:border-l border-gray-400/50 rounded text-center overflow-hidden shadow p-5'>
             <div className='border-b border-gray-400 pb-10'>
 
             <div className='flex bg--200'>

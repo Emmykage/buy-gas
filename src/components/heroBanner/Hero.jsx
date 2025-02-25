@@ -6,6 +6,9 @@ import "./style.scss"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
 import { SET_LOGIN } from "../../redux/app"
+import { Button, Checkbox, Form, Input, Select } from "antd"
+import FormInput from "../input/Input"
+import OrderForm from "../orderForm/OrderForm"
 
 const Hero = () => {
 
@@ -26,6 +29,10 @@ const Hero = () => {
       }
 
 
+<div>
+  {/* <OrderForm/> */}
+</div>
+
     
 
 
@@ -40,7 +47,8 @@ const ContentHero = () => {
   const [phone, setPhone] = useState("")
   const navigate = useNavigate()
 
-  const handleSubmit = () => {
+  const handleSubmit = ({phone}) => {
+    console.log(phone)
     if(phone.trim() !== ""){
       dispatch(SET_LOGIN(phone))
       navigate("/dashboard")
@@ -48,7 +56,8 @@ const ContentHero = () => {
 
   }
   return(
-    <div className="max-w-lg text-justify">
+    <div className="max-w- w-full text-justify">
+
 
    
     <p className='bg-gray text-2xl text-left max-w-6xl mt-0 md:mt-16 md:text-4xl font-bold  text-gray-200 '>
@@ -57,16 +66,45 @@ const ContentHero = () => {
     <p className='text-gray-200 text-left  max-w-6xl text-xl font-semibold md:text-3xl mt-10 '>
       Safe, Fast, and Efficient
     </p>
-    <div className="my-4">
-      <input 
-        name="phone"
-        onChange={(e) => setPhone(e.target.value)}
-        value={phone}
-      className="py-6 px-4 text-2xl bg-gray-200/10 border border-white rounded-2xl text-white w-full" placeholder="Enter Number" />
-      <AppButton onClick={handleSubmit} className={"h-80 text"}>
+
+    <div className="pt-6">
+    <Form
+    name="login"
+    className="space-y-3 gap-5 flex flex-col"
+   
+    style={{
+      maxWidth: 600,
+    }}
+    initialValues={{
+      remember: true,
+    }}
+    onFinish={handleSubmit}
+    onFinishFailed={() => {}}
+    autoComplete="on"
+  >
+    <FormInput type="text" name={"phone"}
+     placeHolder={"Phone Number"}/>
+    <FormInput
+    required={true}
+    name={"location"}
+    placeHolder={"Select Location"} type={"select"} options={[{label: "wuse", value: "wuse"},
+      {label: "maitama", value: "maitama"},
+      {label: "Apo", value: "apo"},
+      {label: "Gwarimpa", value: "gwarimpa"},
+      {label: "Asokoro", value: "asokoro"}
+    ]}/>
+
+   
+    <Form.Item label={null}>
+    
+
+      <AppButton htmlType="submit" className={"h-80 text"}>
         Buy Gas
       </AppButton>
+    </Form.Item>
+  </Form>
     </div>
+    
     </div>
   )
 }

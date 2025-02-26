@@ -19,7 +19,7 @@ const Home = () => {
   
 
   return (
-    <div className='home relative'>
+    <div className='home h-screen relative'>
         <Nav/>
         <Hero/>
     

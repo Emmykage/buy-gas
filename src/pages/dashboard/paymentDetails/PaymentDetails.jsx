@@ -8,10 +8,11 @@ import { PaystackButton } from 'react-paystack'
 const PaymentDetails = () => {
     const navigate = useNavigate()
     const {user} = useSelector(state => state.auth)
+    const {amount } = useSelector(state => state.order)
 
     const componentProps = {
         email: "emmiemenz@gmail.com",
-        amount: 1600 * 100,
+        amount: amount ? amount * 100  : 1600 * 100,
       
         publicKey: "pk_test_f833f603b86e23ffa37f40f2e90056de9b928bf7",
         text: 'Pay With Card',
@@ -33,7 +34,7 @@ const PaymentDetails = () => {
         </p>
 
     </div>
-    <div className='m-auto bg--200 max-w-4xl my-10'>
+    <div className='md:m-auto mx-4 max-w-4xl my-10'>
         <div className='max-w-lg m-auto border border-gray-500/40 bg-gray-50 rounded text-center overflow-hidden shadow p-5'>
             <div className='flex gap-5 my-3'>
                 <p className='flex-1 font-medium text-gray-700'>Name:       </p>

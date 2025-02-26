@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <section className='border bg-white/80'>
+    <section className='border border-gray-300 bg-white/80'>
 
     <footer className='bg-gray-200 py-20 px-4'>
         <div className='m-auto max-w-7xl grid gap-10 sm:grid-cols-2 lg:grid-cols-5'>

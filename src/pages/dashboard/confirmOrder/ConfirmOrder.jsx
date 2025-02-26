@@ -38,13 +38,13 @@ const ConfirmOrder = () => {
 
 
 
-    <div className='m-auto bg--200 max-w-4xl my-0'>
+    <div className='m-auto mx-4 bg--200 max-w-4xl my-0'>
         <div  className='bg-alt/20 flex justify-between items-center max-w-2xl m-auto my-4 w-full p-3 '>
             <p className='text-center text-alt  font-semibold'>
                 Order has been confirmed 
             </p>
 
-            <button onClick={()=> reactToPrintFn()} type='button' className='border cursor-pointer px-8 py-3 border-alt rounded-2xl text-alt font-semibold hover:text-primary hover:border-primary'>
+            <button onClick={()=> reactToPrintFn()} type='button' className='border cursor-pointer md:px-8 md:py-3 px-3 py-1.5 md:text-base text-sm border-alt rounded-2xl text-alt font-semibold hover:text-primary hover:border-primary'>
                 Print Receipt
             </button>
 

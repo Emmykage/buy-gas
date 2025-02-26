@@ -4,18 +4,16 @@ import AppButton from "../button/Button"
 import Login from "../login/Login"
 import "./style.scss"
 import { useDispatch } from "react-redux"
-import { useState } from "react"
 import { SET_LOGIN } from "../../redux/app"
-import { Button, Checkbox, Form, Input, Select } from "antd"
+import { Form } from "antd"
 import FormInput from "../input/Input"
-import OrderForm from "../orderForm/OrderForm"
 import { addUser } from "../../redux/auth"
 
 const Hero = () => {
 
   const {pathname} = useLocation()
   return (
-<div className='md:h-[900px] h-screen hero flex justify-left px-4 flex-col items-center hero'>
+<div className='h-full hero flex justify-left px-4 flex-col items-center'>
   <div className="grid md:grid-cols-2 m-auto max-w-7xl">
 
 

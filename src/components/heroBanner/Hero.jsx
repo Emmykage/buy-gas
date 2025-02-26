@@ -53,7 +53,7 @@ const ContentHero = () => {
 
   }
   return(
-    <div className="max-w- w-full text-justify">
+    <div className="max-w- w-full md:bg-gray-800/50 bg-gray-800/70 rounded-2xl p-4 text-justify">
 
 
    

@@ -25,7 +25,7 @@ const Home = () => {
     
 
 
-            <section  className='md:py-20 py-0 px-4 my-6 bg-gray-100/20'>
+            {/* <section  className='md:py-20 py-0 px-4 my-6 bg-gray-100/20'>
 
             <h2 className='text-3xl text-center font-semibold text-gray-700'>
                 Why Choose US
@@ -67,7 +67,7 @@ const Home = () => {
        
         <CTA  buttonText={"Get Started"} link="/services" title={"Get Stared Today"} />
         <FooterInfo/>
-        <Footer/>
+        <Footer/> */}
     </div>
 
   )

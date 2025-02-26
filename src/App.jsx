@@ -1,7 +1,6 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/home'
-import Footer from './components/footer/Footer'
 import Login from './components/login/Login'
 import Dashboard from './pages/dashboard'
 import PaymentForm from './pages/dashboard/payments/PaymentForm'
@@ -15,9 +14,11 @@ import AdminLogin from './pages/auth/AdminLogin'
 import MainDashboard from './layouts/MainDashboard'
 import AdminOrder from './pages/admin/Order'
 import AdminUser from './pages/admin/Users'
+import useScrollTop from './hooks/useScrollTop'
 
 
 function App() {
+  useScrollTop()
 
   
   return (
@@ -35,8 +36,7 @@ function App() {
           <Route path='payment-form' element={<PaymentForm/>}/>
           <Route path='payment-details' element={<PaymentDetails/>}/>
           <Route path='confirm-payments' element={<ConfirmOrder/>}/>
-
-        
+     
         
         </Route>
 

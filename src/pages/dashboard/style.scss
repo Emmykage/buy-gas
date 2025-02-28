@@ -1,0 +1,19 @@
+.clip-triangle{
+    // clip-path: polygon(0% 0%, 60% 50%, 0% 100%);
+}
+
+// .clip-triangle::after{
+//     clip-path: polygon(0% 0%, 60% 50%, 0% 100%);
+// }
+
+
+.triangle{
+    width: 0;
+    height: 0;
+    // background: gray;
+    border-left: 40px solid green;
+    border-right: 40px solid transparent;
+    border-bottom: 20px solid white;
+    border-top: 20px solid white;
+}
+

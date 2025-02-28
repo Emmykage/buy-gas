@@ -29,16 +29,19 @@ function App() {
 
         </Route>
 
-        <Route path='/dashboard' element={<MainDashboard/>}>        
-          <Route path='' element={<Dashboard/>}/>
-          <Route path='history' element={<History/>}/>
-          <Route path='contact-us' element={<Contact/>}/>
+        <Route path='/dashboard' element={<> <MainDashboard/></>}>        
+          <Route path='' element={<Dashboard/>}>
           <Route path='payment-form' element={<PaymentForm/>}/>
           <Route path='payment-details' element={<PaymentDetails/>}/>
           <Route path='confirm-payments' element={<ConfirmOrder/>}/>
      
+          </Route>
+          <Route path='contact-us' element={<Contact/>}/>
+
+          </Route>
+          <Route path='history' element={<History/>}/>
+          
         
-        </Route>
 
         <Route path='/admin' element={<AdminDashboard/>}>
         <Route path='home' element={<AdminHome/>}/>

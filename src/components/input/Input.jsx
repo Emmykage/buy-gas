@@ -37,12 +37,12 @@ const FormInput = ({
 
         rules={[
             {
-                required:{required},
+                required: required,
                 message: 'Please input!',
             },
           ]}
-
-        label={label}>
+        label={label}
+      >
 
     {type === "number" ? 
     

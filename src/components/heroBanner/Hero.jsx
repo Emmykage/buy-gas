@@ -49,7 +49,7 @@ const ContentHero = () => {
       dispatch(SET_LOGIN(values))
       dispatch(addUser(values))
 
-      navigate("/dashboard")
+      navigate("/dashboard/payment-form")
 
   }
   return(

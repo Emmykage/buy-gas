@@ -84,7 +84,7 @@ const ConfirmOrder = () => {
 
             <div className='text-left mt-10'>
                 <div className='flex gap-5 my-3'>
-                    <p className='flex-1 font-medium text-gray-500'>Kg    </p>
+                    <p className='flex-1 font-medium text-gray-500'>Quantity    </p>
                     <p className='flex-1 text-gray-800 font-semibold'>12.5k</p>
                 </div>
                 <div className='flex gap-5 my-3'>
@@ -99,6 +99,10 @@ const ConfirmOrder = () => {
                 <p className='flex-1 font-medium text-gray-500'>Delivery</p>
                 <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(2000)}</p>
             </div>
+            <div className='flex gap-5 my-4'>
+                            <p className='flex-1 font-medium text-gray-500 text-left'>Service Charge  </p>
+                            <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(3000)}</p>
+                        </div>
             <div className='flex gap-5'>
                 <p className='flex-1 font-medium text-gray-500'>Net Total</p>
                 <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(18000)}</p>

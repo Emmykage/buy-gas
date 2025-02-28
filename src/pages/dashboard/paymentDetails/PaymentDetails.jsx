@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { nairaFormat } from '../../../utils/nairaFormat'
 import Navigation from '../components/navigation/Navigation'
 import { useSelector } from 'react-redux'
@@ -21,58 +21,86 @@ const PaymentDetails = () => {
             },
         // onClose: () => alert('Are you sure'),
       }; 
+      console.log(amount)
     
   return (
     <>
-        <div className='bg-red container m-auto  h-screen'>
+        <div className='bg-red container m-auto  min-h-screen'>
+            <div className='md:m-auto mx-4 max-w-4xl my-10'>
+       
+                <div className='max-w-lg my-10 m-auto border border-gray-500/40 bg-gray-50 rounded text-center overflow-hidden shadow p-5'>
+                <div  className='bg-gray-300 mb-6 w-full p-3 '>
+                    <p className='text-center text-gray-900 font-semibold'>
+                        Review Your Order 
+                    </p>
 
-    <Navigation/>
+                </div>
+                    <div className='flex gap-5 border-b-gray-300 my-3'>
+                        <p className='flex-1 font-medium text-gray-700 text-left'>Phone Number</p>
+                        <p className='flex-1 text-gray-800 font-semibold'>07064334160</p>
+                    </div>
+                    <div className='flex gap-5 my-4'>
+                        <p className='flex-1 font-medium text-gray-700 text-left'>Quantity</p>
+                        <p className='flex-1 text-gray-800 font-semibold'>07064334160</p>
+                    </div>
+                    <div className='flex gap-5 -gray-300  my-4'>
+                        <p className='flex-1 font-medium text-gray-700 text-left'>Delivery Time</p>
+                        <p className='flex-1 text-gray-800 font-semibold'>2 hours</p>
+                    </div>
+                    <div className='flex gap-5 border-b-gray-300 my-4'>
+                        <p className='flex-1 font-medium text-gray-700 text-left'>Address</p>
+                        <p className='flex-1 text-gray-800 font-semibold'>Congo street Lokogoa</p>
 
-    <div  className='bg-gray-300 w-full p-3 '>
-        <p className='text-center text-gray-900 font-semibold'>
-            Review Your Order 
-        </p>
+                    </div>
 
-    </div>
-    <div className='md:m-auto mx-4 max-w-4xl my-10'>
-        <div className='max-w-lg m-auto border border-gray-500/40 bg-gray-50 rounded text-center overflow-hidden shadow p-5'>
-            <div className='flex gap-5 my-3'>
-                <p className='flex-1 font-medium text-gray-700'>Name:       </p>
-                <p className='flex-1 text-gray-800 font-semibold'>Jon Christopher</p>
-            </div>
-            <div className='flex gap-5 border-b border-b-gray-300 my-3'>
-                <p className='flex-1 font-medium text-gray-700'>Kg:       </p>
-                <p className='flex-1 text-gray-800 font-semibold'>12.5k</p>
-            </div>
-            <div className='flex gap-5 border-b border-b-gray-300 py-4 my-3'>
-                <p className='flex-1 font-medium text-gray-700'>Phone Number:       </p>
-                <p className='flex-1 text-gray-800 font-semibold'>07064334160</p>
-            </div>
-            <div className='flex gap-5  border-b border-b-gray-300 py-4 my-3'>
-                <p className='flex-1 font-medium text-gray-700'>Amount:       </p>
-                <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(16000)}</p>
-            </div>
-            <div className='flex gap-5 border-b border-b-gray-300 py-4 my-3'>
-                <p className='flex-1 font-medium text-gray-700'>Delivery:       </p>
-                <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(2000)}</p>
-            </div>
-            <div className='flex gap-5  border-b border-b-gray-300 py-4'>
-                <p className='flex-1 font-medium text-gray-700'>Net Total:       </p>
-                <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(18000)}</p>
-            </div>
+                    <div className='border-t'>
+                        <div>
+                            <h3 className='text-left text-lg font-semibold my-5'>
+                                Payment Breakdown
 
-            
+                            </h3>
+                        </div>
+                    <div className='flex gap-5 '>
+                        <p className='flex-1 font-medium text-gray-700 text-left'>Gas Price     </p>
+                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(16000)}</p>
+                    </div>
+                    <div className='flex gap-5 my-4'>
+                        <p className='flex-1 font-medium text-gray-700 text-left'>Delivery Fee       </p>
+                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(2000)}</p>
+                    </div>
+                    <div className='flex gap-5 my-4'>
+                        <p className='flex-1 font-medium text-gray-700 text-left'>Service Charge  </p>
+                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(3000)}</p>
+                    </div>
+                    </div>
+                    
+                    <div className='flex gap-5 my-4'>
+                        <p className='flex-1 font-medium text-gray-700 text-left'>Total       </p>
+                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(18000)}</p>
+                    </div>
+
+                    
 
 
 
-            <div>
-               
+                    <div>
+                    
 
-                <PaystackButton  className='bg-alt text-white text-sm rounded-2xl w-full my-10 p-4 block m-auto'  {...componentProps}/>
+                        <PaystackButton  className='bg-alt text-white text-sm rounded-lg w-full my-10 p-4 block m-auto'  {...componentProps}/>
 
-            </div>
-          
-        </div>
+                    </div>
+                    <div className='font-medium text-gray-600'>
+                        <NavLink to={"/dashboard/payment-form"}>
+                            Need to make changes?
+                        </NavLink>
+                        <p> Click here to update your order</p>
+                        <p>By clicking pay, you agree to pay the service above and to our privacy policy</p>
+                        <p>
+                            Need help? 09086743152
+                        </p>
+                    </div>
+                
+                </div>
     </div>
     </div>
 

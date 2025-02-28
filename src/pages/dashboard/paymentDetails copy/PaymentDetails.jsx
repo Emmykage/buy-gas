@@ -16,6 +16,8 @@ const PaymentDetails = () => {
 
     </div>
     <div className='m-auto bg--200 max-w-4xl my-10'>
+
+        <p>Review Your Order</p>
         <div className='max-w-2xl m-auto border rounded text-center overflow-hidden shadow p-5'>
             <div className='flex gap-5 my-3'>
                 <p className='flex-1 font-medium text-gray-700'>Name:       </p>

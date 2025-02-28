@@ -1,0 +1,45 @@
+.order-form{
+
+    .ant-btn{
+        background: #1c638b;
+        padding: 20px 12px;
+        color: wheat;
+        height: 60px;
+        @media (max-width: 789px) {
+            padding: 20px 2px;
+            height: 50px;
+            gap: 2px;
+
+
+            
+        }
+
+        &.active{
+            @apply bg-primary;
+            background-color: orangered;
+        }
+        &:hover{
+            background-color: orangered;
+
+        }
+    }
+    .ant-col{
+        label{
+            font-weight: 600;
+            @apply text-gray-600;
+        }
+        input{
+            padding: 10px;
+        }
+        .ant-select{
+            height: 50px;
+            .ant-select-selector{
+                height: 100%;
+            }
+         }
+        
+    }
+
+
+  
+}

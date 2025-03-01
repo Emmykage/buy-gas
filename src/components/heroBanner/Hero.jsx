@@ -56,51 +56,51 @@ const ContentHero = () => {
     <div className="max-w- w-full md:bg-gray-800/50 bg-gray-800/70 rounded-2xl p-4 text-justify">
 
 
-   
-    <p className='bg-gray text-2xl text-left max-w-6xl mt-0 md:mt-16 md:text-4xl font-bold  text-gray-200 '>
-      Get Reliable Supply of Cooking Gas For your household today.
-    </p>
-    <p className='text-gray-200 text-left  max-w-6xl text-xl font-semibold md:text-3xl mt-5 md:mt-10 '>
-      Safe, Fast, and Efficient
-    </p>
+      
+        <p className='bg-gray text-2xl text-left max-w-6xl mt-0 md:mt-16 md:text-4xl font-bold  text-gray-200 '>
+          Get Reliable Supply of Cooking Gas For your household today.
+        </p>
+        <p className='text-gray-200 text-left  max-w-6xl text-xl font-semibold md:text-3xl mt-5 md:mt-10 '>
+          Safe, Fast, and Efficient
+        </p>
 
-    <div className="pt-4 md:pt-6">
-    <Form
-    name="login"
-    className=" md:gap-5 flex flex-col"
-   
-    style={{
-      maxWidth: 600,
-    }}
-    initialValues={{
-      remember: true,
-    }}
-    onFinish={handleSubmit}
-    onFinishFailed={() => {}}
-    autoComplete="on"
-  >
-    <FormInput type="text" name={"phone"}
-     placeHolder={"Phone Number"}/>
-    <FormInput
-    required={true}
-    name={"location"}
-    placeHolder={"Select Location"} type={"select"} options={[{label: "wuse", value: "wuse"},
-      {label: "maitama", value: "maitama"},
-      {label: "Apo", value: "apo"},
-      {label: "Gwarimpa", value: "gwarimpa"},
-      {label: "Asokoro", value: "asokoro"}
-    ]}/>
+        <div className="pt-4 md:pt-6">
+        <Form
+        name="login"
+        className=" md:gap-5 flex flex-col"
+      
+        style={{
+          maxWidth: 600,
+        }}
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={handleSubmit}
+        onFinishFailed={() => {}}
+        autoComplete="on"
+      >
+        <FormInput type="text" name={"phone"}
+        placeHolder={"Phone Number"}/>
+        <FormInput
+        required={true}
+        name={"location"}
+        placeHolder={"Select Location"} type={"select"} options={[{label: "wuse", value: "wuse"},
+          {label: "maitama", value: "maitama"},
+          {label: "Apo", value: "apo"},
+          {label: "Gwarimpa", value: "gwarimpa"},
+          {label: "Asokoro", value: "asokoro"}
+        ]}/>
 
-   
-    <Form.Item label={null}>
-    
+      
+        <Form.Item label={null}>
+        
 
-      <AppButton htmlType="submit" className={"h-80 text"}>
-        Buy Gas
-      </AppButton>
-    </Form.Item>
-  </Form>
-    </div>
+          <AppButton htmlType="submit" className={"h-80 text"}>
+            Buy Gas
+          </AppButton>
+        </Form.Item>
+      </Form>
+      </div>
     
     </div>
   )

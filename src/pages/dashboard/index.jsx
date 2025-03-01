@@ -23,7 +23,7 @@ const Dashboard = () => {
             <div>
 
                 
-            <div className='mt-10 md:hidden'>
+            <div className='mt-10 hidden md:hidden'>
             <h3 className='md:text-3xl text-xl font-semibold flex justify-between'>
                 <span>  Hello,</span>
                {user?.phone}</h3>

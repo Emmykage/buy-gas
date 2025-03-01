@@ -6,7 +6,6 @@ import { NavLink, useNavigate } from 'react-router-dom'
 const Navigation = () => {
     const navigate = useNavigate()
     const {user} = useSelector(state => state.auth)
-
     const [show, setShow] = useState(false)
   return (
     <header className='py-5 px-4 border-b border-gray-500 z-50'>
@@ -35,16 +34,16 @@ const Navigation = () => {
                 </div>
 
 
-<div className='flex items-center gap-5 justify-between'>
-    <div className='md:hidden'>
-                <h3 className='md:text-3xl text-xl font-semibold flex justify-between'>
-                {user?.phone}</h3>
+<div className='flex items-center md:hidden gap-5 justify-between'>
+    <div className=''>
+        <h3 className='md:text-3xl text-xl font-semibold flex justify-between'>
+        {user?.phone}</h3>
 
-            </div>
-            <span className='md:hidden'>
-            <TiThMenuOutline onClick={() => setShow(prev => !prev)} className='text-3xl text-alt'/>
-            </span>
     </div>
+    <span className='md:hidden'>
+        <TiThMenuOutline onClick={() => setShow(prev => !prev)} className='text-3xl text-alt'/>
+    </span>
+   </div>
 
            
         </div>

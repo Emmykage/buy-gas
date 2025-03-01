@@ -1,12 +1,19 @@
 import React from 'react'
 import Navigation from './components/navigation/Navigation'
-import { GiCampCookingPot } from 'react-icons/gi'
 import { Outlet, useNavigate } from 'react-router-dom'
-import OrderForm from '../../components/orderForm/OrderForm'
 import { useSelector } from 'react-redux'
 import "./style.scss"
+import CustomizedSteppers from '../../components/stepper/Stepper'
 const Dashboard = () => {
+    const [activeStep, setActiveStep] = React.useState(0);
+    const [isLastStep, setIsLastStep] = React.useState(false);
+    const [isFirstStep, setIsFirstStep] = React.useState(false);
     const navigate = useNavigate()
+
+    
+  const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
+  const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
+ 
     const {user} = useSelector(state => state.auth)
   return (
     <div className='bg-red container m-auto  min-h-screen'>
@@ -17,19 +24,32 @@ const Dashboard = () => {
 
                 
             <div className='mt-10'>
-            <h3 className='md:text-3xl text-xl font-semibold'>Hello, {user?.phone}</h3>
-            <p className='font-medium text-gray-600'>Get your gas refilled today</p>
+            <h3 className='md:text-3xl text-xl font-semibold flex justify-between'>
+                <span>  Hello,</span>
+               {user?.phone}</h3>
+            {/* <p className='font-medium text-gray-600'>Get your gas refilled today</p> */}
         </div>
 
             </div>
 
 
-            <div className='my-10'>
-                <div className='grid  grid-cols-3'>
+            <div className='my-0'>
+                {/* <div className='grid  grid-cols-3'>
                 <div className='bg-alt h-10 clip-triangl'></div>
                 <div className='bg-gray-200 clip-triangle  border-r border-r-gray-/ '></div>
                 <div className='bg-gray-200 clip-triangle'></div>
-                </div>
+                </div> */}
+
+                <CustomizedSteppers 
+                 activeStep={activeStep}
+                 setActiveStep={setActiveStep}
+                 isLastStep={isLastStep}
+                 setIsLastStep={setIsLastStep}
+                 isFirstStep={isFirstStep}
+                 setIsFirstStep={setIsFirstStep}
+                 />
+
+                 
 
 
 
@@ -41,7 +61,7 @@ const Dashboard = () => {
                     </button> */}
 
 
-                    <Outlet/>
+                    <Outlet context={[handleNext, handlePrev]}/>
                 </div>
 
                 {/* <div>

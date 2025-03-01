@@ -31,15 +31,15 @@ function App() {
 
         <Route path='/dashboard' element={<> <MainDashboard/></>}>        
           <Route path='' element={<Dashboard/>}>
-          <Route path='payment-form' element={<PaymentForm/>}/>
-          <Route path='payment-details' element={<PaymentDetails/>}/>
-          <Route path='confirm-payments' element={<ConfirmOrder/>}/>
+            <Route path='payment-form' element={<PaymentForm/>}/>
+            <Route path='payment-details' element={<PaymentDetails/>}/>
+            <Route path='confirm-payments' element={<ConfirmOrder/>}/>
      
           </Route>
-          <Route path='contact-us' element={<Contact/>}/>
+            <Route path='contact-us' element={<Contact/>}/>
+            <Route path='history' element={<History/>}/>
 
           </Route>
-          <Route path='history' element={<History/>}/>
           
         
 

@@ -7,7 +7,9 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createOrder } from '../../redux/order'
 import "./style.scss"
-const OrderForm = () => {
+const OrderForm = ({
+    handleNext
+}) => {
     const navigate = useNavigate()
     const [query] = useSearchParams()
     const [form] = Form.useForm();
@@ -52,6 +54,8 @@ className='order-form'
     console.log(values)
     dispatch(createOrder(amount))
     navigate("/dashboard/payment-details")
+    handleNext()
+
 
   }
     }
@@ -110,7 +114,11 @@ type="text" />
     <Flex gap="small" wrap justify='space-between' className='overflow-x-auto'>
         {items.map(item => (
             <Button 
-            onClick={() => setSelected(item.kg)} 
+            onClick={() => {
+                setSelected(item.kg)
+                setAmount(item.amount)
+            }
+            } 
             key={item.id} color="primary" variant="solid" className={`${selected === item.kg ? "active" : "" } flex gap-0 flex-1 flex-col`} >
             <span className='font-medium'>
             {item.kg}KG

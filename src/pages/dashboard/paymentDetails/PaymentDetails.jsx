@@ -1,11 +1,13 @@
 import React from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate, useOutletContext } from 'react-router-dom'
 import { nairaFormat } from '../../../utils/nairaFormat'
 import Navigation from '../components/navigation/Navigation'
 import { useSelector } from 'react-redux'
 import { PaystackButton } from 'react-paystack'
 
 const PaymentDetails = () => {
+    const [handleNext, handlePrev] = useOutletContext()
+
     const navigate = useNavigate()
     const {user} = useSelector(state => state.auth)
     const {amount } = useSelector(state => state.order)
@@ -18,6 +20,8 @@ const PaymentDetails = () => {
         text: 'Pay With Card',
         onSuccess: () => {
             navigate("/dashboard/confirm-payments")
+            handleNext()
+
             },
         // onClose: () => alert('Are you sure'),
       }; 
@@ -26,7 +30,7 @@ const PaymentDetails = () => {
   return (
     <>
         <div className='bg-red container m-auto  min-h-screen'>
-            <div className='md:m-auto mx-4 max-w-4xl my-10'>
+            <div className='md:m-auto max-w-4xl my-10'>
        
                 <div className='max-w-lg my-10 m-auto border border-gray-500/40 bg-gray-50 rounded text-center overflow-hidden shadow p-5'>
                 <div  className='bg-gray-300 mb-6 w-full p-3 '>
@@ -90,9 +94,15 @@ const PaymentDetails = () => {
 
                     </div>
                     <div className='font-medium text-gray-600'>
-                        <NavLink to={"/dashboard/payment-form"}>
+                        <a  onClick={()=> {
+                                handlePrev()
+                                navigate("/dashboard/payment-form")
+
+
+
+                        }}>
                             Need to make changes?
-                        </NavLink>
+                        </a>
                         <p> Click here to update your order</p>
                         <p>By clicking pay, you agree to pay the service above and to our privacy policy</p>
                         <p>

@@ -14,7 +14,7 @@ import {
 } from 'antd';
 import FormInput from "../../../components/input/Input";
 import Navigation from "../components/navigation/Navigation";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useSearchParams } from "react-router-dom";
 import { nairaFormat } from "../../../utils/nairaFormat";
 import OrderForm from "../../../components/orderForm/OrderForm";
 
@@ -24,6 +24,7 @@ const PaymentForm = () => {
     const [query] = useSearchParams()
     const [form] = Form.useForm();
     const [amount, setAmount] = useState()
+    const [handleNext] = useOutletContext()
 
     const kg = query.get("kg")
     const rate = 1300
@@ -32,7 +33,7 @@ const PaymentForm = () => {
 
   return (
     <>
-                          <OrderForm/>
+      <OrderForm handleNext={handleNext}/>
 
     </>
   );

@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { TiThMenuOutline } from 'react-icons/ti'
+import { useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 const Navigation = () => {
     const navigate = useNavigate()
+    const {user} = useSelector(state => state.auth)
+
     const [show, setShow] = useState(false)
   return (
     <header className='py-5 px-4 border-b border-gray-500 z-50'>
@@ -18,7 +21,7 @@ const Navigation = () => {
                     <TiThMenuOutline onClick={() => setShow(prev => !prev)} className='text-3xl text-primary md:hidden'/>
 
                     <li className='mt-10 md:mt-0'>
-                            <NavLink className={"hover:text-primary"} to={"/dashboard"}>Make Order</NavLink>
+                            <NavLink className={"hover:text-primary"} to={"/dashboard/payment-form"}>Make Order</NavLink>
                         </li>   
                         <li className='mt-4 md:mt-0'>
                             <NavLink className={"hover:text-primary"} to={"/dashboard/history"}>Refill History</NavLink>
@@ -32,9 +35,18 @@ const Navigation = () => {
                 </div>
 
 
+<div className='flex items-center gap-5 justify-between'>
+    <div className='md:hidden'>
+                <h3 className='md:text-3xl text-xl font-semibold flex justify-between'>
+                {user?.phone}</h3>
+                {/* <p className='font-medium text-gray-600'>Get your gas refilled today</p> */}
+            </div>
             <span className='md:hidden'>
             <TiThMenuOutline onClick={() => setShow(prev => !prev)} className='text-3xl text-alt'/>
             </span>
+    </div>
+
+           
         </div>
         
     </header>

@@ -23,7 +23,7 @@ const Dashboard = () => {
             <div>
 
                 
-            <div className='mt-10'>
+            <div className='mt-10 md:hidden'>
             <h3 className='md:text-3xl text-xl font-semibold flex justify-between'>
                 <span>  Hello,</span>
                {user?.phone}</h3>
@@ -32,8 +32,10 @@ const Dashboard = () => {
             </div>
 
 
-            <div className='my-0'>
-        
+            <div className='py-0'>  
+
+                <div className='max-w-7xl m-auto pt-10 bg--50'>
+               
                 <CustomizedSteppers 
                  activeStep={activeStep}
                  setActiveStep={setActiveStep}
@@ -42,15 +44,6 @@ const Dashboard = () => {
                  isFirstStep={isFirstStep}
                  setIsFirstStep={setIsFirstStep}
                  />
-
-                 
-
-
-
-  
-
-                <div className='max-w-7xl m-auto mt-10 bg--50'>
-               
 
 
                     <Outlet context={[handleNext, handlePrev]}/>

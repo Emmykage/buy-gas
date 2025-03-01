@@ -39,7 +39,7 @@ const Navigation = () => {
     <div className='md:hidden'>
                 <h3 className='md:text-3xl text-xl font-semibold flex justify-between'>
                 {user?.phone}</h3>
-                {/* <p className='font-medium text-gray-600'>Get your gas refilled today</p> */}
+
             </div>
             <span className='md:hidden'>
             <TiThMenuOutline onClick={() => setShow(prev => !prev)} className='text-3xl text-alt'/>

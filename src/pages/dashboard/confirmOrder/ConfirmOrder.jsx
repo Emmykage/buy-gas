@@ -18,9 +18,6 @@ const ConfirmOrder = () => {
   return (
     <>
         <div className='bg-red container m-auto  min-h-screen'>
-
-    <Navigation/>
-
     <div className='flex '>
 
 
@@ -38,7 +35,7 @@ const ConfirmOrder = () => {
 
 
 
-    <div className='m-auto mx-4 bg--200 max-w-4xl my-0'>
+    <div className='m-auto max-w-4xl my-0'>
         <div  className='bg-alt/20 flex justify-between items-center max-w-2xl m-auto my-4 w-full p-3 '>
             <p className='text-center text-alt  font-semibold'>
                 Order has been confirmed 
@@ -49,7 +46,7 @@ const ConfirmOrder = () => {
             </button>
 
         </div>
-        <div ref={contentRef} className='max-w-2xl m-auto md:border-l border-gray-400/50 rounded text-center overflow-hidden shadow p-5'>
+        <div ref={contentRef} className='max-w-2xl w-full px-2 m-auto md:border-l border-gray-400/50 rounded text-center overflow-hidden shadow py-5'>
             <div className='border-b border-gray-400 pb-10'>
 
             <div className='flex bg--200'>
@@ -63,7 +60,6 @@ const ConfirmOrder = () => {
                         <p className='flex-1 text-left text-gray-800 font-semibold'>7064334160</p>
                     </div>
                     <div className=' flex px-4 flex-1 gap-5 my-1'>
-                    {/* <p className='flex-1 text-left font-medium text-gray-700'>Name:       </p> */}
                         <p className='flex-1 text-left text-gray-800 font-semibold'>Jon Christopher</p>
                     </div>
                 </div>
@@ -124,21 +120,6 @@ const ConfirmOrder = () => {
                 </li>
             </ul>
          </div>
-           
-
-            
-
-            
-
-
-
-            <div>
-                {/* <button className='bg-alt text-white text-sm rounded-2xl w-full my-10 p-4 block m-auto' onClick={() => {
-                    navigate("/dashboard/payment-details")
-                }}>
-                    Pay with Card
-                </button> */}
-            </div>
             <div>
                 <p className='text-gray-700 my-4 font-medium'>
                     Our Agents will get in touch 

@@ -94,7 +94,7 @@ const PaymentDetails = () => {
 
                     </div>
                     <div className='font-medium text-gray-600'>
-                        <a  onClick={()=> {
+                        <a className='text-blue-700'  onClick={()=> {
                                 handlePrev()
                                 navigate("/dashboard/payment-form")
 

@@ -11,8 +11,9 @@ const Navigation = () => {
     <header className='py-5 px-4 border-b border-gray-500 z-50'>
 
         <div className='flex items-center justify-between'>
-            <NavLink to={"/"}>
-                <img src="/logo.png" alt="" className='w-40 h-24' />
+            <NavLink to={"/"} className='text-3xl text-alt font-semibold p-1 md:text-alt'>
+                {/* <img src="/logo.png" alt="" className='w-40 h-24' /> */}
+                GasWaka
             </NavLink>
 
             <div className='text-alt  font-medium'>

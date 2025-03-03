@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom'
 import Hero from '../../components/heroBanner/Hero'
 import FooterInfo from '../../components/footer-info/FooterInfo'
 import Footer from '../../components/footer/Footer'
+import HeroForm from '../../components/heroBanner/HeroForm'
 
 
 const Home = () => {
@@ -21,7 +22,8 @@ const Home = () => {
   return (
     <div className='home h-screen relative'>
         <Nav/>
-        <Hero/>
+        {/* <Hero/> */}
+        <HeroForm/>
     
 
 

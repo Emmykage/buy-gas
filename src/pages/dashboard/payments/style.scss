@@ -6,3 +6,30 @@
         display: block !important;
     }
 }
+
+.quick-select{
+
+    .ant-btn{
+        background: #1447e6;
+        padding: 20px 12px;
+        color: wheat;
+        height: 60px;
+        @media (max-width: 789px) {
+            padding: 20px 2px;
+            height: 50px;
+            gap: 2px;
+
+
+            
+        }
+
+        &.active{
+            @apply bg-primary;
+            background-color: orangered;
+        }
+        &:hover{
+            background-color: orangered;
+
+        }
+    }
+}

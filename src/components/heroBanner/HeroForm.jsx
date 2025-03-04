@@ -19,13 +19,14 @@ const HeroForm = () => {
     
       }
   return (
-    <div className='bg-blue-700 md:my-10 m-auto heroform px-5 md:px-10 py-10 max-w-3xl text-white text-sm'>
-        <p className='font-medium'>Fiar Prices, Fast Delivery</p>
-        <p className='font-medium'>Get Cooking Gas for 1,300 per Kg Prices, Fast Delivery</p>
-        <p className='mt-10 font-medium '>Enter your details to begin</p>
+    <div className='bg-gray-100 md:my-0 m-auto heroform px-5 md:px-10 py-10 max-w-3xl text-black text-center text-sm'>
+        <p className='font-medium text-4xl text-theme'>GasWaka</p>
+        <p className='font-medium text-2xl'>Fair Prices, Fast Delivery</p>
+        <p className='font-medium text-2xl'>Get Cooking Gas for 1,300 per Kg Prices, Fast Delivery</p>
+        <p className='mt-10 font-medium text-xl my-2'>Enter your details to begin</p>
 
 
-        <div  className='bg-white px-7 rounded-lg py-6'>
+        <div  className='bg-white border border-gray-200 shadow-xl px-7 rounded-lg py-6'>
 
 
         <Form
@@ -59,7 +60,7 @@ const HeroForm = () => {
           {label: "Asokoro", value: "asokoro"}
         ]}/>
 
-<Button htmlType='submit' className='bg-blue-700'>
+<Button htmlType='submit' className='bg-theme'>
     Buy Gas
 </Button>
 

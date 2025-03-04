@@ -20,8 +20,8 @@ const Home = () => {
   
 
   return (
-    <div className='home h-screen relative'>
-        <Nav/>
+    <div className='home flex  justify-center items-center bg-gray-100 h-screen relative'>
+        {/* <Nav/> */}
         {/* <Hero/> */}
         <HeroForm/>
     

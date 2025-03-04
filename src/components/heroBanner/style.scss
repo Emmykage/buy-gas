@@ -70,18 +70,21 @@
     // background-position: center;
     // background-size: cover;
     // background-position: center 10%;
+    // @apply bg-red-100;
     .ant-btn{
-        // background: #1c638b;
+        // background: #1c638orangeb;
 
-        background-color: #1447e6;       
-        padding: 42px;
+        background-color: #0866ff;       
+        padding: 32px;
         color: wheat;
         font-size: 20px;
         font-weight: 600;
         border: black;
         width: 100%;
         &:hover{
-            background-color: orange !important;
+            border: 1px solid rgba(66, 66, 66, 0.185) !important;
+
+            background-color:  #0867ffe0;
         }
     }
 
@@ -91,18 +94,19 @@
     
             display: block !important;
             .ant-input{
-                background: rgb(221, 221, 221);
-                padding: 20px;
+                padding: 14px;
                 color: #1c638b;
                 font-size: 17px;
+                // border: 1px solid gray ;
+                @apply bordre border-gray-200
 
 
             }
 
             .ant-input::placeholder{
-                color: #1c638b;
-                font-weight: 600;
-                opacity: 0.4;
+                color: #666;
+                font-weight: 400;
+                opacity: 0.6;
 
             }
             input{
@@ -113,19 +117,17 @@
                 padding: 4px;
             }
             .ant-select{
-                height: 70px;
+                height: 58px;
 
                 .ant-select-selector{
-                    background: rgb(221, 221, 221);
+                    // background: rgb(221, 221, 221);
                     color: #1c638b;
                     font-size: 16px;
-                    // input::placeholder{
-                    //     // color: white;
-                    // }
+                    // @apply p-10;
                     .ant-select-selection-placeholder {
                         color: white ;
                         opacity: 0.6;
-                        color: #1c638b;
+                        color: #6666;
                         font-weight: 600;
                         opacity: 0.4;
                       }

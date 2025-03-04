@@ -90,7 +90,7 @@ const PaymentDetails = () => {
                     <div>
                     
 
-                        <PaystackButton  className='bg-alt text-white text-sm rounded-lg w-full my-10 p-4 block m-auto'  {...componentProps}/>
+                        <PaystackButton  className='bg-blue-700 text-white text-sm rounded-lg w-full my-10 p-4 block m-auto'  {...componentProps}/>
 
                     </div>
                     <div className='font-medium text-gray-600'>

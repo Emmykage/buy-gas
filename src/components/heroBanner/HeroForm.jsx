@@ -1,5 +1,4 @@
 import { Button, Form } from 'antd'
-import React from 'react'
 import FormInput from '../input/Input'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -19,11 +18,11 @@ const HeroForm = () => {
     
       }
   return (
-    <div className='bg-gray-100 md:my-0 m-auto heroform px-5 md:px-10 py-10 max-w-3xl text-black text-center text-sm'>
-        <p className='font-medium text-4xl text-theme'>GasWaka</p>
-        <p className='font-medium text-2xl'>Fair Prices, Fast Delivery</p>
-        <p className='font-medium text-2xl'>Get Cooking Gas for 1,300 per Kg Prices, Fast Delivery</p>
-        <p className='mt-10 font-medium text-xl my-2'>Enter your details to begin</p>
+    <div className='bg-gray-00 md:my-0 m-auto heroform px-5 md:px-10 py-10 max-w-3xl text-black text-center text-sm'>
+        <p className=' my-10 text-4xl text-theme font-semibold'>Gas <span className='text-primary'>Waka</span> </p>
+        <p className='font-semibold text-gray-700 text-2xl'>Fair Prices, Fast Delivery</p>
+        <p className='font-medium text-gray-700 text-lg'>Get Cooking Gas for 1,300 per Kg Prices, Fast Delivery</p>
+        <p className='mt-10 font-medium text-lg text-gray-700 my-2'>Enter your details to begin</p>
 
 
         <div  className='bg-white border border-gray-200 shadow-xl px-7 rounded-lg py-6'>
@@ -53,8 +52,9 @@ const HeroForm = () => {
 <FormInput
         required={true}
         name={"location"}
-        placeHolder={"Select Location"} type={"select"} options={[{label: "wuse", value: "wuse"},
-          {label: "maitama", value: "maitama"},
+        placeHolder={"Select Location"} 
+        type={"select"} options={[{label: "Wuse", value: "wuse"},
+          {label: "Maitama", value: "maitama"},
           {label: "Apo", value: "apo"},
           {label: "Gwarimpa", value: "gwarimpa"},
           {label: "Asokoro", value: "asokoro"}

@@ -3,7 +3,7 @@ import Nav from '../../components/nav/Nav'
 import './home.scss'
 
 import CTA from '../../components/CTA/CAT'
-import { useLocation } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import Hero from '../../components/heroBanner/Hero'
 import FooterInfo from '../../components/footer-info/FooterInfo'
 import Footer from '../../components/footer/Footer'
@@ -20,14 +20,11 @@ const Home = () => {
   
 
   return (
-    <div className='home flex  justify-center items-center bg-gray-100 h-screen relative'>
+    <div className='home flex  justify-center flex-col items-center bg-gray-100 h-screen relative'>
         {/* <Nav/> */}
         {/* <Hero/> */}
         <HeroForm/>
-    
-
-
-            {/* <section  className='md:py-20 py-0 px-4 my-6 bg-gray-100/20'>
+                {/* <section  className='md:py-20 py-0 px-4 my-6 bg-gray-100/20'>
 
             <h2 className='text-3xl text-center font-semibold text-gray-700'>
                 Why Choose US
@@ -70,6 +67,12 @@ const Home = () => {
         <CTA  buttonText={"Get Started"} link="/services" title={"Get Stared Today"} />
         <FooterInfo/>
         <Footer/> */}
+
+        <ul className='text-gray-800  flex mt-auto mb-10 gap-5'>
+        <li><NavLink className={"text-sm"}>About </NavLink></li>
+        <li><NavLink className={"text-sm"}>Help </NavLink></li>
+        <li><NavLink className={"text-sm"}>More </NavLink></li>
+        </ul>
     </div>
 
   )

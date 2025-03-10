@@ -3,7 +3,8 @@ import FormInput from '../input/Input'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { SET_LOGIN } from '../../redux/app'
-import { addUser } from '../../redux/auth'
+// import { addUser } from '../../redux/auth'
+import { userLogin, userSignUp } from '../../redux/actions/auth'
 
 const HeroForm = () => {
     const dispatch = useDispatch()
@@ -12,9 +13,13 @@ const HeroForm = () => {
     
       const handleSubmit = (values) => {
           dispatch(SET_LOGIN(values))
-          dispatch(addUser(values))
+          dispatch(userLogin({user: values})).then(result => {
+            if(userLogin.fulfilled.match(result)){
+              navigate("/dashboard/payment-form")
+
+            }
+          })
     
-          navigate("/dashboard/payment-form")
     
       }
   return (
@@ -31,7 +36,7 @@ const HeroForm = () => {
         <Form
 
         initialValues={{
-            phone_no: "",
+            phone: "",
             location: null
         }}
         name="login"
@@ -47,9 +52,8 @@ const HeroForm = () => {
         onFinishFailed={() => {}}
         autoComplete="on"
         >
-
-<FormInput name={"phone_no"} placeHolder={"Phone Number"}/>
-<FormInput
+        <FormInput name={"phone"} placeHolder={"Phone Number"}/>
+        <FormInput
         required={true}
         name={"location"}
         placeHolder={"Select Location"} 

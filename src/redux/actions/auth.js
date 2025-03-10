@@ -42,13 +42,16 @@ const userSignUp = createAsyncThunk("sign-up/user-signUp", async(data, {rejectWi
 
 export const userProfile = createAsyncThunk("auth/user-profile", async(data, {rejectWithValue}) => {
     try {
-        console.log(fetchToken())
 
         const response = await axios.get(`${baseUrl + apiRoute}users/user_profile`, {  
             headers: {
           "Authorization": `Bearer ${fetchToken()}`
       }})
+
+      console.log(fetchToken())
+
         const result =  response.data
+        console.log(response)
 
         return result
     } catch (error) {
@@ -66,33 +69,21 @@ export const userProfile = createAsyncThunk("auth/user-profile", async(data, {re
 
 const userLogin = createAsyncThunk("login/user-login", async(data, {rejectWithValue}) => {
     try {
-        const response = await axios.post(`${baseUrl}login`, data);
+        const response = await axios.post(`${baseUrl + apiRoute}users/app_access`, data);
 
         const result = response.data;
 
-        // Access the access token from the response headers
-        const authorizationHeader = response.headers.authorization;
+        console.log(result)
 
-        let accessToken = null;
-
-        // If the authorization header is present, extract the token
-        if (authorizationHeader) {
-            if (authorizationHeader.startsWith('Bearer ')) {
-                accessToken = authorizationHeader.split(' ')[1];  // Split to get the token part
-            } else {
-                console.warn('Unexpected format for Authorization header:', authorizationHeader);
-            }
-        } else {
-            console.warn('Authorization header not found');
-        }
-
-        localStorage.setItem("bitglobal", JSON.stringify(accessToken));
-        toast(result.message, {type: "success"})
+       
+        localStorage.setItem("gaswaka", JSON.stringify(result.token));
+        toast(result?.message || "Logged In", {type: "success"})
 
 
         return result;
     } catch (error) {
         if (error.response) {
+            console.log(error.response)
             toast(error.response.data, {type: "error"})
             return rejectWithValue({ message: error.response.data });
         }

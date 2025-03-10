@@ -15,6 +15,7 @@ import MainDashboard from './layouts/MainDashboard'
 import AdminOrder from './pages/admin/Order'
 import AdminUser from './pages/admin/Users'
 import useScrollTop from './hooks/useScrollTop'
+import { AppToast } from './components/toast'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
   
   return (
     <>
+     <AppToast/>
       <Routes>
       <Route path="/" element={<Home/>}>
         <Route path="/auth" element={<Login/>}/>

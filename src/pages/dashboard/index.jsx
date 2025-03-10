@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navigation from './components/navigation/Navigation'
 import { Outlet, useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import "./style.scss"
 import CustomizedSteppers from '../../components/stepper/Stepper'
+import { userProfile } from '../../redux/actions/auth'
 const Dashboard = () => {
     const [activeStep, setActiveStep] = React.useState(0);
+    const dispatch = useDispatch()
     const [isLastStep, setIsLastStep] = React.useState(false);
     const [isFirstStep, setIsFirstStep] = React.useState(false);
     const navigate = useNavigate()
@@ -15,6 +17,12 @@ const Dashboard = () => {
   const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
  
     const {user} = useSelector(state => state.auth)
+
+    useEffect(() => {
+      dispatch(userProfile())
+    }, [])
+
+    console.log(user.phone)
   return (
     <div className='container m-auto  min-h-screen'>
         <Navigation/> 

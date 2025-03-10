@@ -62,7 +62,7 @@ const PaymentForm = () => {
     <>
       <OrderForm handleNext={handleNext}/>
 
-      <div className="my-10 quick-select">
+      {/* <div className="my-10 quick-select">
 
 
         <Space gap="small">
@@ -97,7 +97,7 @@ const PaymentForm = () => {
        
         </Flex>
 
-      </div>
+      </div> */}
 
     </>
   );

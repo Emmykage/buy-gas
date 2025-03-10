@@ -2,7 +2,7 @@ export const setToken = (token) => {
     localStorage.setItem('bitglobal', JSON.stringify(token));
   };
   export const fetchToken = (refresh) => {
-    const token = JSON.parse(localStorage.getItem('bitglobal'));
+    const token = JSON.parse(localStorage.getItem('gaswaka'));
     if (refresh) {
       return token ? token?.refresh_token : token;
     }

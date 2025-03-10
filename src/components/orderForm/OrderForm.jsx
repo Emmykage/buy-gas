@@ -21,7 +21,10 @@ const OrderForm = ({
 
     const [selected, setSelected] = useState(null)
 
-    console.log(user)
+
+    const kg_amount = Form.useWatch("kg", form)
+
+    console.log(kg_amount,amount)
 
     const items = [{
         kg: 7.5,
@@ -52,9 +55,19 @@ className='order-form'
   form={form}
   onFinish={(values) => {
     console.log(values)
-    dispatch(createOrder(amount))
+    // dispatch(createOrder(amount)).then(result => {
+    //   if(createOrder.fullfilled.match(result)){
+    //     navigate("/dashboard/payment-details")
+    //     handleNext()
+    //   }
+    // })
+
+
+
     navigate("/dashboard/payment-details")
     handleNext()
+  
+
 
 
   }
@@ -62,7 +75,7 @@ className='order-form'
   initialValues={{
     full_name: "",
     kg: kg ?? "",
-    amount: "",
+    amount: amount,
     address: "",
     instruction: "",
     delivery_option: "",
@@ -104,8 +117,17 @@ type="text" />
         {label: "Gwarimpa", value: "gwarimpa"},
         {label: "Asokoro", value: "asokoro"}
     ]}/>
+<div>
+<FormInput label="Amount(Kg)" max={50} required={false} name="kg" type="number" />
 
-  {/* <FormInput label="Full Name" required name="full_name" type="text" /> */}
+
+  
+
+   <p className='text-gray-600 font-medium'><span className='font-medium'>
+    {nairaFormat(rate * kg_amount)}
+  </span> @ {rate}/Kg</p>
+ 
+</div>
 
   <div>
     <p className='text-gray-600 font-bold my-4'>Quantity and Amount</p>
@@ -141,11 +163,6 @@ type="text" />
         <FormInput label="Address" required={true} name="address" type="text" placeHolder={"Enter Address"} />
         <FormInput label="Delivery Instructions (optional)" required={false} name="instruction" type="text" placeHolder={"Enter Addition Instuction"} />
 
- 
-  {/* <span className='font-medium'>
-    {nairaFormat(amount)}
-  </span> */}
-   {/* <p className='text-gray-600 font-medium'>Rate = {rate}/Kg</p> */}
  
   <Form.Item>
     <AppButton htmlType="submit">Make Order</AppButton>

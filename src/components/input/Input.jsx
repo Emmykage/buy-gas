@@ -21,6 +21,7 @@ const { TextArea } = Input;
 // };
 const FormInput = ({
     type,
+    max,
     label,
     onChange,
     disabled,
@@ -49,6 +50,7 @@ const FormInput = ({
         
             <InputNumber 
            disabled={disabled}
+           max={max}
             onChange={onChange}/>
 
             : 

@@ -81,8 +81,8 @@ const userLogin = createAsyncThunk("login/user-login", async(data, {rejectWithVa
         return result;
     } catch (error) {
         if (error.response) {
-            console.log(error.response)
-            toast(error.response.data, {type: "error"})
+            console.log(error.response.data)
+            toast( "Server Error", {type: "error"})
             return rejectWithValue({ message: error.response.data });
         }
         console.error(error);

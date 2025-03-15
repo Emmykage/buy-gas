@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { SET_LOADING, SET_LOGIN } from '../../redux/app'
 // import { addUser } from '../../redux/auth'
-import { userLogin, userSignUp } from '../../redux/actions/auth'
+import { userLogin } from '../../redux/actions/auth'
 
 const HeroForm = () => {
     const dispatch = useDispatch()
@@ -19,6 +19,9 @@ const HeroForm = () => {
               navigate("/dashboard/payment-form")
               dispatch(SET_LOADING(false))
 
+
+            }else{
+              dispatch(SET_LOADING(false))
 
             }
           })

@@ -1,31 +1,61 @@
-import React from 'react'
-import { NavLink, useNavigate, useOutletContext } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { NavLink, useNavigate, useOutletContext, useSearchParams } from 'react-router-dom'
 import { nairaFormat } from '../../../utils/nairaFormat'
 import Navigation from '../components/navigation/Navigation'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { PaystackButton } from 'react-paystack'
+import { getOrder, updateOrder } from '../../../redux/actions/order'
+import { SET_LOADING } from '../../../redux/app'
 
 const PaymentDetails = () => {
+    const dispatch= useDispatch()
+    const [queryParam] = useSearchParams()
+
+
+    const {order} = useSelector(state => state.order)
+    const id = queryParam.get("request_id")
     const [handleNext, handlePrev] = useOutletContext()
 
     const navigate = useNavigate()
-    const {user} = useSelector(state => state.auth)
-    const {amount } = useSelector(state => state.order)
 
+
+
+    useEffect(()=> {
+        dispatch(getOrder(id))
+    }, [id])
+
+
+    const handleConfirmation = () => {
+        dispatch(updateOrder({id: id, data: {status: "completed"} })).then(result => {
+            if(updateOrder.fulfilled.match(result)){
+                const order_id = result.payload.id
+
+                dispatch(SET_LOADING(false))
+                navigate(`/dashboard/confirm-payments?request_id=${order_id}`)
+                handleNext()
+            }else{
+                dispatch(SET_LOADING(false))
+
+            }
+        })
+
+    }
+
+
+    console.log(id, order)
     const componentProps = {
         email: "emmiemenz@gmail.com",
-        amount: amount ? amount * 100  : 1600 * 100,
+        amount: order.total_amount * 100 ,
       
         publicKey: "pk_test_f833f603b86e23ffa37f40f2e90056de9b928bf7",
         text: 'Pay With Card',
         onSuccess: () => {
-            navigate("/dashboard/confirm-payments")
-            handleNext()
+            handleConfirmation()
+      
 
             },
         // onClose: () => alert('Are you sure'),
       }; 
-      console.log(amount)
     
   return (
     <>
@@ -41,19 +71,19 @@ const PaymentDetails = () => {
                 </div>
                     <div className='flex gap-5 border-b-gray-300 my-3'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Phone Number</p>
-                        <p className='flex-1 text-gray-800 font-semibold'>07064334160</p>
+                        <p className='flex-1 text-gray-800 font-semibold'>{order?.phone}</p>
                     </div>
                     <div className='flex gap-5 my-4'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Quantity</p>
-                        <p className='flex-1 text-gray-800 font-semibold'>07064334160</p>
+                        <p className='flex-1 text-gray-800 font-semibold'>{order?.quantity}Kg</p>
                     </div>
                     <div className='flex gap-5 -gray-300  my-4'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Delivery Time</p>
-                        <p className='flex-1 text-gray-800 font-semibold'>2 hours</p>
+                        <p className='flex-1 text-gray-800 font-semibold'>{order?.delivery_time ?? "N/A"} hours</p>
                     </div>
                     <div className='flex gap-5 border-b-gray-300 my-4'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Address</p>
-                        <p className='flex-1 text-gray-800 font-semibold'>Congo street Lokogoa</p>
+                        <p className='flex-1 text-gray-800 font-semibold'>{order?.address + " " + order?.location}</p>
 
                     </div>
 
@@ -66,21 +96,21 @@ const PaymentDetails = () => {
                         </div>
                     <div className='flex gap-5 '>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Gas Price     </p>
-                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(16000)}</p>
+                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.amount)}</p>
                     </div>
                     <div className='flex gap-5 my-4'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Delivery Fee       </p>
-                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(2000)}</p>
+                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.delivery_fee)}</p>
                     </div>
                     <div className='flex gap-5 my-4'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Service Charge  </p>
-                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(3000)}</p>
+                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.service_charge)}</p>
                     </div>
                     </div>
                     
                     <div className='flex gap-5 my-4'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Total       </p>
-                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(18000)}</p>
+                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.total_amount)}</p>
                     </div>
 
                     
@@ -90,7 +120,11 @@ const PaymentDetails = () => {
                     <div>
                     
 
-                        <PaystackButton  className='bg-blue-700 text-white text-sm rounded-lg w-full my-10 p-4 block m-auto'  {...componentProps}/>
+                        <PaystackButton onClick={
+                            () => {
+                                dispatch(SET_LOADING(true))
+                            }
+                        }  className='bg-blue-700 text-white text-sm rounded-lg w-full my-10 p-4 block m-auto'  {...componentProps}/>
 
                     </div>
                     <div className='font-medium text-gray-600'>

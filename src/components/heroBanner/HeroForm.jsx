@@ -2,7 +2,7 @@ import { Button, Form } from 'antd'
 import FormInput from '../input/Input'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { SET_LOGIN } from '../../redux/app'
+import { SET_LOADING, SET_LOGIN } from '../../redux/app'
 // import { addUser } from '../../redux/auth'
 import { userLogin, userSignUp } from '../../redux/actions/auth'
 
@@ -12,10 +12,13 @@ const HeroForm = () => {
   
     
       const handleSubmit = (values) => {
+        dispatch(SET_LOADING(true))
           dispatch(SET_LOGIN(values))
           dispatch(userLogin({user: values})).then(result => {
             if(userLogin.fulfilled.match(result)){
               navigate("/dashboard/payment-form")
+              dispatch(SET_LOADING(false))
+
 
             }
           })

@@ -16,13 +16,23 @@ const Dashboard = () => {
   const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
   const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
  
-    const {user} = useSelector(state => state.auth)
+    const {user, loading} = useSelector(state => state.auth)
 
     useEffect(() => {
       dispatch(userProfile())
     }, [])
 
-    console.log(user.phone)
+
+    useEffect(()=> {
+      console.log("first fire")
+      if(!loading && !user){
+        console.log("fire redirect")
+        navigate("/")
+
+      }
+    }, [user, loading])
+
+    console.log(user, loading)
   return (
     <div className='container m-auto  min-h-screen'>
         <Navigation/> 

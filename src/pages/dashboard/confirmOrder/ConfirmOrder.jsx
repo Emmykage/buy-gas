@@ -1,13 +1,31 @@
-import React, { useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useRef } from 'react'
+import { NavLink, useNavigate, useSearchParams } from 'react-router-dom'
 import { nairaFormat } from '../../../utils/nairaFormat'
 import Navigation from '../components/navigation/Navigation'
 import { useReactToPrint } from 'react-to-print'
+import { useDispatch, useSelector } from 'react-redux'
+import { getOrder } from '../../../redux/actions/order'
+import dateFormater from '../../../utils/dateFormatter'
 
 const ConfirmOrder = () => {
+    const dispatch= useDispatch()
+
     const navigate = useNavigate()
+    const [queryParam] = useSearchParams()
+
+
+    const id = queryParam.get("request_id")
+
+    const {order} = useSelector(state => state.order)
 
     const contentRef = useRef()
+
+      useEffect(()=> {
+            dispatch(getOrder(id))
+        }, [id])
+    
+    
+
 
     const reactToPrintFn = useReactToPrint({ 
         contentRef,
@@ -21,7 +39,7 @@ const ConfirmOrder = () => {
     <div className='flex '>
 
 
-        <aside className='max-w-60 md:block hidden w-full h-screen md:border-r mt-6 border-gray-300'>
+        <aside className='max-w-60 md:block hidden w-full h-screen md:border-r mt-6 border-gray-300 gap-5'>
 
             <ul>
                 <li className='border-b border-gray-300 font-medium py-6 px-5'>
@@ -31,7 +49,7 @@ const ConfirmOrder = () => {
 
         </aside>
 
-    <div className='flex-1'>
+    <div className='flex-1 '>
 
 
 
@@ -51,16 +69,16 @@ const ConfirmOrder = () => {
 
             <div className='flex bg--200'>
                 <span className='flex h-16 w-16 rounded shadow hover:shadow-none border-gray-300 shrink-0 justify-center items-center border'>
-                    12kg
+                    {order?.quantity}kg
 
                 </span>
 
                 <div>
                     <div className=' flex px-4 flex-1 gap-5 my-0'>
-                        <p className='flex-1 text-left text-gray-800 font-semibold'>7064334160</p>
+                        <p className='flex-1 text-left text-gray-800 font-semibold'>{order?.phone}</p>
                     </div>
                     <div className=' flex px-4 flex-1 gap-5 my-1'>
-                        <p className='flex-1 text-left text-gray-800 font-semibold'>Jon Christopher</p>
+                        <p className='flex-1 text-left text-sm text-red-600 font-normal'>Unverified User</p>
                     </div>
                 </div>
 
@@ -68,12 +86,12 @@ const ConfirmOrder = () => {
 
             <div className='flex my-4 text-left max-w-lg justify-between justify'>
                 <p  className='fl font-medium text-gray-500'>Reference</p>
-                <p>144322606-93971-1740259785228</p>
+                <p>{order?.id}</p>
             </div>
 
             <div className='flex my-4 text-left  max-w-lg justify-between justify'>
                 <p  className='fle font-medium text-gray-500'>Paid At</p>
-                <p>12 Mar 2025</p>
+                <p>{ dateFormater(order?.created_at)}</p>
             </div>
             </div>
 
@@ -81,27 +99,27 @@ const ConfirmOrder = () => {
             <div className='text-left mt-10'>
                 <div className='flex gap-5 my-3'>
                     <p className='flex-1 font-medium text-gray-500'>Quantity    </p>
-                    <p className='flex-1 text-gray-800 font-semibold'>12.5k</p>
+                    <p className='flex-1 text-gray-800 font-semibold'>{order?.quantity}Kg</p>
                 </div>
                 <div className='flex gap-5 my-3'>
                 <p className='flex-1 font-medium text-gray-500'>Phone:       </p>
-                <p className='flex-1 text-gray-800 font-semibold'>07064334160</p>
+                <p className='flex-1 text-gray-800 font-semibold'>{order?.phone}</p>
             </div>
             <div className='flex gap-5  my-3'>
                 <p className='flex-1 font-medium text-gray-500'>Amount:       </p>
-                <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(16000)}</p>
+                <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.amount)}</p>
             </div>
             <div className='flex gap-5 my-3'>
                 <p className='flex-1 font-medium text-gray-500'>Delivery</p>
-                <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(2000)}</p>
+                <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.delivery_fee)}</p>
             </div>
             <div className='flex gap-5 my-4'>
                             <p className='flex-1 font-medium text-gray-500 text-left'>Service Charge  </p>
-                            <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(3000)}</p>
+                            <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.service_charge)}</p>
                         </div>
             <div className='flex gap-5'>
                 <p className='flex-1 font-medium text-gray-500'>Net Total</p>
-                <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(18000)}</p>
+                <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.total_amount)}</p>
             </div>
          </div>
          <div className='text-left mt-10'>
@@ -113,17 +131,17 @@ const ConfirmOrder = () => {
             <ul className='bg-gray-100 mt-7 border-teal-500 border-t '>
                 <li className='p-8 mt-5'>
                     <p className='font-semibold text-gray-700'>LINK</p>
-                    <p className='text-sm font-medium text-gray-500'>Sat, 22 Fev 2025 22:29:45</p>
+                    <p className='text-sm font-medium text-gray-500'>{order?.updated_at ?? "Sat, 22 Fev 2025 22:29:45"}</p>
                     <p className='text- font-medium text-gray-700'>Reference:</p>
-                    <p className='text-sm font-medium text-gray-500'>144322606-93971-1740259785228</p>
+                    <p className='text-sm font-medium text-gray-500'>{order?.id}</p>
 
                 </li>
             </ul>
          </div>
             <div>
-                <p className='text-gray-700 my-4 font-medium'>
-                    Our Agents will get in touch 
-                </p>
+                <NavLink to={"/dashboard/payment-form"} className='text-gray-700 my-4 block hover:text-alt font-medium'>
+                    Back to Home 
+                </NavLink>
             </div>
         </div>
     </div>

@@ -3,10 +3,11 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import FormInput from '../input/Input'
 import AppButton from '../button/Button'
 import { nairaFormat } from '../../utils/nairaFormat'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { createOrder } from '../../redux/order'
 import "./style.scss"
+import { createOrder } from '../../redux/actions/order'
+import { SET_LOADING } from '../../redux/app'
 const OrderForm = ({
     handleNext
 }) => {
@@ -22,9 +23,9 @@ const OrderForm = ({
     const [selected, setSelected] = useState(null)
 
 
-    const kg_amount = Form.useWatch("kg", form)
+    // const kg_amount = Form.useWatch("quantity", form)
 
-    console.log(kg_amount,amount)
+    // console.log(kg_amount,amount, user)
 
     const items = [{
         kg: 7.5,
@@ -49,23 +50,41 @@ const OrderForm = ({
 
 
 
+
+    useEffect(()=> {
+      form.setFieldsValue({
+        location: user?.location,
+        phone: user?.phone
+      })
+
+    }, [user])
   return (
 <Form
 className='order-form'
   form={form}
   onFinish={(values) => {
-    console.log(values)
-    // dispatch(createOrder(amount)).then(result => {
-    //   if(createOrder.fullfilled.match(result)){
-    //     navigate("/dashboard/payment-details")
-    //     handleNext()
-    //   }
-    // })
+    dispatch(SET_LOADING(true))
+    const data = {order:{ ...values, amount}}
+    dispatch(createOrder(data)).then(result => {
+      if(createOrder.fulfilled.match(result)){
+        console.log(result)
+
+        const order_id = result.payload.data.id
+        console.log(result)
+        dispatch(SET_LOADING(false))
+
+        navigate(`/dashboard/payment-details?request_id=${order_id}`)
+        handleNext()
+      }else{
+        dispatch(SET_LOADING(false))
+
+      }
+    })
 
 
 
-    navigate("/dashboard/payment-details")
-    handleNext()
+    // navigate("/dashboard/payment-details")
+    // handleNext()
   
 
 
@@ -74,13 +93,13 @@ className='order-form'
     }
   initialValues={{
     full_name: "",
-    kg: kg ?? "",
+    quantity: kg ?? "",
     amount: amount,
     address: "",
     instruction: "",
     delivery_option: "",
     location: user?.location,
-    phone_no: user?.phone
+    phone: user?.phone
   }}
 
   layout="vertical"
@@ -89,7 +108,7 @@ className='order-form'
 <FormInput label="Phone Number"
 disabled={!!user?.phone}
 required={true}
-name="phone_no"  
+name="phone"  
 type="text" />
 
 
@@ -106,25 +125,22 @@ type="text" />
     ]}/>
     
 <FormInput
-    required={true}
+    required={false}
     label={"Delivery Option"}
-    name={"Delivery"}
     // disabled={!!user?.location}
-    placeHolder={"Delivery Option"} type={"select"} options={[
-        {label: "wuse", value: "wuse"},
-        {label: "maitama", value: "maitama"},
-        {label: "Apo", value: "apo"},
-        {label: "Gwarimpa", value: "gwarimpa"},
-        {label: "Asokoro", value: "asokoro"}
+    placeHolder={"Delivery Option"} name="delivery_option" type={"select"} options={[
+        {label: "Immediate", value: "immediate"},
+       
     ]}/>
 <div>
-<FormInput label="Amount(Kg)" max={50} required={false} name="kg" type="number" />
+<FormInput 
+onChange={(value) => setAmount(value * rate)} label="Quantity(Kg)" max={50} required={false} name="quantity" type="number" />
 
 
   
 
    <p className='text-gray-600 font-medium'><span className='font-medium'>
-    {nairaFormat(rate * kg_amount)}
+    {nairaFormat(amount)}
   </span> @ {rate}/Kg</p>
  
 </div>
@@ -137,8 +153,11 @@ type="text" />
         {items.map(item => (
             <Button 
             onClick={() => {
+              form.setFieldsValue({
+                quantity: item.kg
+              })
                 setSelected(item.kg)
-                setAmount(item.amount)
+                setAmount(item.kg * rate)
             }
             } 
             key={item.id} color="primary" variant="solid" className={`${selected === item.kg ? "active" : "" } flex gap-0 flex-1 flex-col`} >
@@ -147,7 +166,7 @@ type="text" />
 
             </span>
             <span className='font-medium'>
-                {nairaFormat(item.amount)}
+                {nairaFormat(item.kg * rate)}
             
 
             </span>

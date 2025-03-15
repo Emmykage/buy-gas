@@ -16,14 +16,20 @@ import AdminOrder from './pages/admin/Order'
 import AdminUser from './pages/admin/Users'
 import useScrollTop from './hooks/useScrollTop'
 import { AppToast } from './components/toast'
+import Loader from './components/loader/Loader'
+import { useSelector } from 'react-redux'
 
 
 function App() {
   useScrollTop()
+  const {isLoading}= useSelector(state => state.app)
 
   
   return (
     <>
+    {isLoading && 
+    <Loader/>
+    }
      <AppToast/>
       <Routes>
       <Route path="/" element={<Home/>}>

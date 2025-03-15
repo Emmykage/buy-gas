@@ -12,9 +12,8 @@ export const createOrder = createAsyncThunk("create-order/create-order", async( 
             },
         })
 
-        const result = response.data 
-        console.log(result)
-        return result
+        const {data} = response.data 
+        return data
     } catch (error) {
         console.log(error?.response)
         if(error.response){
@@ -36,9 +35,9 @@ export const updateOrder = createAsyncThunk("order/update-order", async( {id, da
             },
         })
 
-        const result = response.data 
-        console.log(result)
-        return result
+        const {data} = response.data 
+        console.log(data)
+        return data
     } catch (error) {
         console.log(error?.response)
         if(error.response){
@@ -65,7 +64,7 @@ export const getOrder = createAsyncThunk("order/get-order", async( id, {rejectWi
     } catch (error) {
         console.log(error?.response)
         if(error.response){
-            toast(error.response.data.message ?? error.response.statusText ?? "Errror found", {type: "error"})
+            // toast(error.response.data.message ?? error.response.statusText ?? "Errror found", {type: "error"})
             return rejectWithValue({message: error.response.data.message})
 
         }

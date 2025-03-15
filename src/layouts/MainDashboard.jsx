@@ -7,7 +7,7 @@ const MainDashboard = props => {
   return (
     <div>
        <Outlet/>
-        <Footer/>
+        {/* <Footer/> */}
     </div>
   )
 }

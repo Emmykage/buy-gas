@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { NavLink, useNavigate, useSearchParams } from 'react-router-dom'
 import { nairaFormat } from '../../../utils/nairaFormat'
-import Navigation from '../components/navigation/Navigation'
 import { useReactToPrint } from 'react-to-print'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOrder } from '../../../redux/actions/order'
@@ -69,13 +68,13 @@ const ConfirmOrder = () => {
 
             <div className='flex bg--200'>
                 <span className='flex h-16 w-16 rounded shadow hover:shadow-none border-gray-300 shrink-0 justify-center items-center border'>
-                    {order?.quantity}kg
+                    {order?.quantity ?? 12.5}kg
 
                 </span>
 
                 <div>
                     <div className=' flex px-4 flex-1 gap-5 my-0'>
-                        <p className='flex-1 text-left text-gray-800 font-semibold'>{order?.phone}</p>
+                        <p className='flex-1 text-left text-gray-800 font-semibold'>{order?.phone ?? "07064334160"}</p>
                     </div>
                     <div className=' flex px-4 flex-1 gap-5 my-1'>
                         <p className='flex-1 text-left text-sm text-red-600 font-normal'>Unverified User</p>
@@ -91,7 +90,7 @@ const ConfirmOrder = () => {
 
             <div className='flex my-4 text-left  max-w-lg justify-between justify'>
                 <p  className='fle font-medium text-gray-500'>Paid At</p>
-                <p>{ dateFormater(order?.created_at)}</p>
+                <p>{ dateFormater(order?.created_at ?? "24-10-2026") }</p>
             </div>
             </div>
 
@@ -99,27 +98,27 @@ const ConfirmOrder = () => {
             <div className='text-left mt-10'>
                 <div className='flex gap-5 my-3'>
                     <p className='flex-1 font-medium text-gray-500'>Quantity    </p>
-                    <p className='flex-1 text-gray-800 font-semibold'>{order?.quantity}Kg</p>
+                    <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{order?.quantity ?? 12.5}Kg</p>
                 </div>
                 <div className='flex gap-5 my-3'>
                 <p className='flex-1 font-medium text-gray-500'>Phone:       </p>
-                <p className='flex-1 text-gray-800 font-semibold'>{order?.phone}</p>
+                <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{order?.phone ?? "0706123456"}</p>
             </div>
             <div className='flex gap-5  my-3'>
                 <p className='flex-1 font-medium text-gray-500'>Amount:       </p>
-                <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.amount)}</p>
+                <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{nairaFormat(order?.amount ??  10000)}</p>
             </div>
             <div className='flex gap-5 my-3'>
                 <p className='flex-1 font-medium text-gray-500'>Delivery</p>
-                <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.delivery_fee)}</p>
+                <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{nairaFormat(order?.delivery_fee ?? 0)}</p>
             </div>
             <div className='flex gap-5 my-4'>
                             <p className='flex-1 font-medium text-gray-500 text-left'>Service Charge  </p>
-                            <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.service_charge)}</p>
+                            <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{nairaFormat(order?.service_charge ?? 3000)}</p>
                         </div>
             <div className='flex gap-5'>
                 <p className='flex-1 font-medium text-gray-500'>Net Total</p>
-                <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.total_amount)}</p>
+                <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{nairaFormat(order?.total_amount ?? 13000)}</p>
             </div>
          </div>
          <div className='text-left mt-10'>

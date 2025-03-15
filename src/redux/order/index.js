@@ -54,7 +54,7 @@ const OrderSlice = createSlice({
             return{
                 ...state,
                 loading: true,
-                orders: action.payload.data
+                orders: action.payload
             }
         })
         .addCase(getOrders.rejected, (state) => {
@@ -73,7 +73,7 @@ const OrderSlice = createSlice({
             return{
                 ...state,
                 loading: true,
-                orders: action.payload.data
+                orders: action.payload
             }
         }).addCase(updateOrder.rejected, (state) => {
             return{

@@ -23,14 +23,13 @@ const Dashboard = () => {
     }, [])
 
 
-    useEffect(()=> {
-      console.log("first fire")
-      if(!loading && !user){
-        console.log("fire redirect")
-        navigate("/")
+    // useEffect(()=> {
+    //   if(!loading && !user){
+    //     console.log("fire redirect")
+    //     navigate("/")
 
-      }
-    }, [user, loading])
+    //   }
+    // }, [user, loading])
 
     console.log(user, loading)
   return (

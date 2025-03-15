@@ -77,6 +77,10 @@ className='order-form'
         handleNext()
       }else{
         dispatch(SET_LOADING(false))
+        handleNext()
+
+        navigate(`/dashboard/payment-details?request_id=Randominputnumber`)
+
 
       }
     })

@@ -3,7 +3,6 @@ import FormInput from '../input/Input'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { SET_LOADING, SET_LOGIN } from '../../redux/app'
-// import { addUser } from '../../redux/auth'
 import { userLogin } from '../../redux/actions/auth'
 
 const HeroForm = () => {
@@ -22,6 +21,8 @@ const HeroForm = () => {
 
             }else{
               dispatch(SET_LOADING(false))
+              navigate("/dashboard/payment-form")
+
 
             }
           })

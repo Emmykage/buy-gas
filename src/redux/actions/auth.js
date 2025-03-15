@@ -78,7 +78,7 @@ const userLogin = createAsyncThunk("login/user-login", async(data, {rejectWithVa
         toast(result?.message || "Logged In", {type: "success"})
 
 
-        return result;
+        return result.data;
     } catch (error) {
         if (error.response) {
             console.log(error.response.data)
@@ -94,7 +94,6 @@ const userLogin = createAsyncThunk("login/user-login", async(data, {rejectWithVa
 
 export const userLogout = createAsyncThunk("logout/user-logout", async(_, {rejectWithValue}) => {
     try {
-        console.log("first")
 
         const response = await axios.delete(`${baseUrl}logout`,{
             headers: {
@@ -120,47 +119,6 @@ export const userLogout = createAsyncThunk("logout/user-logout", async(_, {rejec
 
 
 
-
-// const userLogin = createAsyncThunk('user/addUser', async (data) => {
-//     const response = await fetch(`${baseUrl}login`, {
-//       method: 'POST',
-//       headers: {
-//         'Content-type': 'application/json',
-//       },
-//       body: JSON.stringify(data),
-//     })
-//      const result = await response.json()
-//      const headers = response.headers
-//      const authorizationHeader = headers.get('Authorization');
-
-//      console.log(authorizationHeader)
-//     return result;
-//   });
-//   const loginUser = createAsyncThunk('user/logUser', async (data, { rejectWithValue }) => {
-//     try {
-//       const response = await fetch(`${baseURL}login`, {
-//         method: 'POST',
-//         headers: {
-//           'Content-type': 'application/json',
-//         },
-//         body: JSON.stringify(data),
-//       });
-//       const result = await response.json();
-  
-//       if (!response.ok) {
-//         const errorMessage = result.error || result.message || 'unknownerror occured ';
-//         return rejectWithValue({ message: errorMessage });
-//       }
-  
-//       setToken(result.token);
-//       return result;
-//     } catch (error) {
-//       console.error('error thrown', error);
-//       return rejectWithValue({ message: 'Spmething went wrong, check your internet Connection!!' });
-  
-//       // throw new Error(error);
-//     }
-//   });
 
 
 export {userSignUp, userLogin}

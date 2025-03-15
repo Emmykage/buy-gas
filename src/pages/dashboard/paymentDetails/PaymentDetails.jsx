@@ -35,6 +35,8 @@ const PaymentDetails = () => {
                 handleNext()
             }else{
                 dispatch(SET_LOADING(false))
+                navigate(`/dashboard/confirm-payments?request_id=${"Randominputuuidnumber"}`)
+                handleNext()
 
             }
         })
@@ -45,7 +47,7 @@ const PaymentDetails = () => {
     console.log(id, order)
     const componentProps = {
         email: "emmiemenz@gmail.com",
-        amount: order.total_amount * 100 ,
+        amount: order.total_amount ?? 13400 * 100 ,
       
         publicKey: "pk_test_f833f603b86e23ffa37f40f2e90056de9b928bf7",
         text: 'Pay With Card',
@@ -71,19 +73,19 @@ const PaymentDetails = () => {
                 </div>
                     <div className='flex gap-5 border-b-gray-300 my-3'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Phone Number</p>
-                        <p className='flex-1 text-gray-800 font-semibold'>{order?.phone}</p>
+                        <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{order?.phone ?? "07064123456"}</p>
                     </div>
                     <div className='flex gap-5 my-4'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Quantity</p>
-                        <p className='flex-1 text-gray-800 font-semibold'>{order?.quantity}Kg</p>
+                        <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{order?.quantity ?? 12.5}Kg</p>
                     </div>
                     <div className='flex gap-5 -gray-300  my-4'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Delivery Time</p>
-                        <p className='flex-1 text-gray-800 font-semibold'>{order?.delivery_time ?? "N/A"} hours</p>
+                        <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{order?.delivery_time ?? "N/A"} hours</p>
                     </div>
                     <div className='flex gap-5 border-b-gray-300 my-4'>
-                        <p className='flex-1 font-medium text-gray-700 text-left'>Address</p>
-                        <p className='flex-1 text-gray-800 font-semibold'>{order?.address + " " + order?.location}</p>
+                        <p className=' font-medium text-gray-700 text-left'>Address</p>
+                        <p className='flex-1  text-gray-800 font-medium text-sm text-right '>{(order?.address ?? "Kano Crescent Wuse II" )+ " " + (order?.location ?? "Kado")}</p>
 
                     </div>
 
@@ -96,21 +98,21 @@ const PaymentDetails = () => {
                         </div>
                     <div className='flex gap-5 '>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Gas Price     </p>
-                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.amount)}</p>
+                        <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{nairaFormat(order?.amount  ?? 10400)}</p>
                     </div>
                     <div className='flex gap-5 my-4'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Delivery Fee       </p>
-                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.delivery_fee)}</p>
+                        <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{nairaFormat(order?.delivery_fee ?? 0)}</p>
                     </div>
                     <div className='flex gap-5 my-4'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Service Charge  </p>
-                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.service_charge)}</p>
+                        <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{nairaFormat(order?.service_charge ?? 3000)}</p>
                     </div>
                     </div>
                     
                     <div className='flex gap-5 my-4'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Total       </p>
-                        <p className='flex-1 text-gray-800 font-semibold'>{nairaFormat(order?.total_amount)}</p>
+                        <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{nairaFormat(order?.total_amount ??  13400)}</p>
                     </div>
 
                     
@@ -137,9 +139,9 @@ const PaymentDetails = () => {
                         }}>
                             Need to make changes?
                         </a>
-                        <p> Click here to update your order</p>
-                        <p>By clicking pay, you agree to pay the service above and to our privacy policy</p>
-                        <p>
+                        <p className='text-sm'> Click here to update your order</p>
+                        <p className='text-sm'>By clicking pay, you agree to pay the service above and to our privacy policy</p>
+                        <p className='text-sm font-semibold'>
                             Need help? 09086743152
                         </p>
                     </div>

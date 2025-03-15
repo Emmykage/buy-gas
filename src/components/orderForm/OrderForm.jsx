@@ -193,4 +193,8 @@ onChange={(value) => setAmount(value * rate)} label="Quantity(Kg)" max={50} requ
 </Form>  )
 }
 
+// OrderForm.propTypes = {
+//   handleNext: PropTypes.func
+// }
+
 export default OrderForm

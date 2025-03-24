@@ -12,12 +12,14 @@ import AdminDashboard from './layouts/AdminDashboard'
 import AdminHome from './pages/admin/Home'
 import AdminLogin from './pages/auth/AdminLogin'
 import MainDashboard from './layouts/MainDashboard'
-import AdminOrder from './pages/admin/Order'
-import AdminUser from './pages/admin/Users'
+import AdminOrder from './pages/admin/orders/Order'
+import AdminUser from './pages/admin/users/Users'
 import useScrollTop from './hooks/useScrollTop'
 import { AppToast } from './components/toast'
 import Loader from './components/loader/Loader'
 import { useSelector } from 'react-redux'
+import ShowOrder from './pages/admin/orders/Shhow'
+import AdminAgents from './pages/admin/agents/Agents'
 
 
 function App() {
@@ -54,7 +56,9 @@ function App() {
         <Route path='/admin' element={<AdminDashboard/>}>
         <Route path='home' element={<AdminHome/>}/>
         <Route path='orders' element={<AdminOrder/>}/>
+        <Route path='orders/:d' element={<ShowOrder/>}/>
         <Route path='users' element={<AdminUser/>}/>
+        <Route path='agents' element={<AdminAgents/>}/>
 
         </Route>
 

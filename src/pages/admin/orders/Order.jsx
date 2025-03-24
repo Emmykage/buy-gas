@@ -1,6 +1,9 @@
+import { NavLink } from "react-router-dom"
+
 const AdminOrder = () => {
+
   return (
-    <div>
+    <div className="bg-white rounded-xl shadow">
         
 
 <div className="relative overflow-x-auto h-96 p-4 shadow-md sm:rounded-lg">
@@ -39,7 +42,7 @@ const AdminOrder = () => {
                     23 March 2025
                 </td>
                 <td className="px-6 py-4 text-right">
-                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <NavLink to="/admin/orders/id" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</NavLink>
                 </td>
             </tr>
             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -56,7 +59,7 @@ const AdminOrder = () => {
                     23 March 2025
                 </td>
                 <td className="px-6 py-4 text-right">
-                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <NavLink to="/admin/orders/id" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</NavLink>
                 </td>
             </tr>
             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -73,7 +76,7 @@ const AdminOrder = () => {
                     23 March 2025
                 </td>
                 <td className="px-6 py-4 text-right">
-                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <NavLink to="/admin/orders/id" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</NavLink>
                 </td>
             </tr>
        

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { createOrder, getOrder, getOrders, updateOrder } from "../actions/order"
+import { createOrder, getOrder, getOrders, getUserOrders, updateOrder } from "../actions/order"
 
 const initialState = {
     order: {},
@@ -87,6 +87,12 @@ const OrderSlice = createSlice({
                 loading: true
             }
         })
+        .addCase(getUserOrders.fulfilled, (state, action) => {
+            return{
+                ...state,
+                orders: action.payload
+            }
+        } )
 
         
 

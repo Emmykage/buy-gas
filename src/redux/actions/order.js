@@ -4,9 +4,10 @@ import { apiRoute, baseUrl } from "../baseUrl";
 import { fetchToken } from "../../hooks/localStorage";
 import { toast } from "react-toastify";
 
-export const createOrder = createAsyncThunk("create-order/create-order", async( data, {rejectWithValue})=> {
+export const createOrder = createAsyncThunk("create-order/create-order", async( dataValue, {rejectWithValue})=> {
+    console.log("first", dataValue)
     try {
-        const response = await axios.post(baseUrl+apiRoute + "orders", data, {
+        const response = await axios.post(baseUrl+apiRoute + "orders", dataValue, {
             headers: {
                 "Authorization": `Bearer ${fetchToken()}`
             },
@@ -16,6 +17,7 @@ export const createOrder = createAsyncThunk("create-order/create-order", async( 
         return data
     } catch (error) {
         console.log(error?.response)
+
         if(error.response){
             toast(error.response.data.message ?? error.response.statusText ?? "Errror found", {type: "error"})
             return rejectWithValue({message: error.response.data.message})
@@ -100,7 +102,7 @@ export const getOrders = createAsyncThunk("order/get-orders", async( _, {rejectW
 
 export const getUserOrders = createAsyncThunk("order/get-user-orders", async( _, {rejectWithValue})=> {
     try {
-        const response = await axios.post(baseUrl+apiRoute + "orders/user", {
+        const response = await axios.get(baseUrl+apiRoute + "orders/user_index", {
             headers: {
                 "Authorization": `Bearer ${fetchToken()}`
             },

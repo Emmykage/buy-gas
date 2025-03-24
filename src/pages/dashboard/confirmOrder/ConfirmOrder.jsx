@@ -66,7 +66,7 @@ const ConfirmOrder = () => {
         <div ref={contentRef} className='max-w-2xl w-full px-2 m-auto md:border-l border-gray-400/50 rounded text-center overflow-hidden shadow py-5'>
             <div className='border-b border-gray-400 pb-10'>
 
-            <div className='flex bg--200'>
+            {/* <div className='flex bg--200'>
                 <span className='flex h-16 w-16 rounded shadow hover:shadow-none border-gray-300 shrink-0 justify-center items-center border'>
                     {order?.quantity ?? 12.5}kg
 
@@ -81,7 +81,7 @@ const ConfirmOrder = () => {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
 
             <div className='flex my-4 text-left max-w-lg justify-between justify'>
                 <p  className='fl font-medium text-gray-500'>Reference</p>

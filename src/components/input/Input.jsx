@@ -35,6 +35,7 @@ const FormInput = ({
     <>
    <Form.Item 
         name={name}
+        normalize={(value) => typeof value === "string" ? value?.trim() : value}
 
         rules={[
             {
@@ -75,9 +76,25 @@ const FormInput = ({
 
            >
          </Select>
+
          :
 
-<Input
+         type=== "hidden" ?
+
+
+         <Input
+         type="hidden"
+            disabled={disabled}
+            onChange={onChange}
+           defaultValue={defaultValue}
+           placeholder={placeHolder}
+
+
+             />
+
+         :
+
+         <Input
             disabled={disabled}
             onChange={onChange}
            defaultValue={defaultValue}

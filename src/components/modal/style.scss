@@ -1,0 +1,39 @@
+.loader{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.527);
+    z-index: 100000;
+
+    &.open{
+        opacity: 1;
+        pointer-events: all;
+
+    }
+    
+    &.close{
+        opacity: 0;
+        pointer-events: none;
+
+    }
+}
+
+.ant-modal{
+    .ant-modal-content{
+        @apply bg-zinc-900; 
+        .ant-modal-close-x{
+            color: white;
+        }
+    }
+
+    .ant-modal-header{
+        background: none;
+    }
+    .ant-modal-title{
+        @apply text-white
+    }
+}

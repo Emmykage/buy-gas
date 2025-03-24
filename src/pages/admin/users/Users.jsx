@@ -2,7 +2,7 @@ import React from 'react'
 
 const AdminUser = () => {
   return (
-    <div>
+    <div className=' className="bg-white rounded-xl shadow"'>
         
 
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

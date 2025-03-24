@@ -21,7 +21,7 @@ const HeroForm = () => {
 
             }else{
               dispatch(SET_LOADING(false))
-              navigate("/dashboard/payment-form")
+              // navigate("/dashboard/payment-form")
 
 
             }

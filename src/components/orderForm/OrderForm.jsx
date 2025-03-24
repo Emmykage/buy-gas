@@ -65,11 +65,12 @@ className='order-form'
   onFinish={(values) => {
     dispatch(SET_LOADING(true))
     const data = {order:{ ...values, amount}}
+    console.log(data)
     dispatch(createOrder(data)).then(result => {
       if(createOrder.fulfilled.match(result)){
         console.log(result)
 
-        const order_id = result.payload.data.id
+        const order_id = result.payload.id
         console.log(result)
         dispatch(SET_LOADING(false))
 
@@ -77,9 +78,6 @@ className='order-form'
         handleNext()
       }else{
         dispatch(SET_LOADING(false))
-        handleNext()
-
-        navigate(`/dashboard/payment-details?request_id=Randominputnumber`)
 
 
       }

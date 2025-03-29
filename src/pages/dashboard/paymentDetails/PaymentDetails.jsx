@@ -49,7 +49,7 @@ const PaymentDetails = () => {
         email: "emmiemenz@gmail.com",
         amount: order.total_amount * 100 ,
       
-        publicKey: "pk_test_f833f603b86e23ffa37f40f2e90056de9b928bf7",
+        publicKey: "pk_test_5febea7cede921954d429814da61a644f8a93d11",
         text: 'Pay With Card',
         onSuccess: () => {
             handleConfirmation()

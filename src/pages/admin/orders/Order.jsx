@@ -1,6 +1,16 @@
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
+import { getOrders } from "../../../redux/actions/order"
 
 const AdminOrder = () => {
+    const {orders, loading } = useSelector(state => state.order)
+    const dispatch = useDispatch()
+    const [isOpen, setOpen] = useState()
+console.log(orders)
+    useEffect(()=> {
+        dispatch(getOrders())
+    },[])
 
   return (
     <div className="bg-white rounded-xl shadow">
@@ -28,57 +38,35 @@ const AdminOrder = () => {
             </tr>
         </thead>
         <tbody>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    O7064334160
-                </th>
-                <td className="px-6 py-4">
-                    12Kg
-                </td>
-                <td className="px-6 py-4">
-                    Kubwa Abuja
-                </td>
-                <td className="px-6 py-4">
-                    23 March 2025
-                </td>
-                <td className="px-6 py-4 text-right">
-                    <NavLink to="/admin/orders/id" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</NavLink>
-                </td>
-            </tr>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    O7064334160
-                </th>
-                <td className="px-6 py-4">
-                    12Kg
-                </td>
-                <td className="px-6 py-4">
-                    Kubwa Abuja
-                </td>
-                <td className="px-6 py-4">
-                    23 March 2025
-                </td>
-                <td className="px-6 py-4 text-right">
-                <NavLink to="/admin/orders/id" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</NavLink>
-                </td>
-            </tr>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    O7064334160
-                </th>
-                <td className="px-6 py-4">
-                    12Kg
-                </td>
-                <td className="px-6 py-4">
-                    Kubwa Abuja
-                </td>
-                <td className="px-6 py-4">
-                    23 March 2025
-                </td>
-                <td className="px-6 py-4 text-right">
-                <NavLink to="/admin/orders/id" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</NavLink>
-                </td>
-            </tr>
+        {orders.length > 0 ? orders.map(item =>(
+                        <tr key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        
+
+                        <td className="px-6 py-4  font-semibold">
+                           {item.phone}
+                        </td>
+                        <td className="px-6 py-4">
+                           {item.quantity}
+                        </td>
+                        <td className="px-6 py-4">
+                           {item.location}
+                        </td>
+                      
+                        <td className="px-6 py-4">
+                           {item.status}
+                        </td>
+                      
+
+                        <td className="px-6 py-4 text-right">
+                            <NavLink to={`/admin/orders/${item.id}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</NavLink>
+                        </td>
+                        </tr>
+                    ))  : 
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        
+                        <td colSpan={4} className='text-center text-lg font-semibold py-10'> No Agent Created                        </td>
+                    </tr>
+                    }
        
         </tbody>
     </table>

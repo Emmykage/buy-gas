@@ -83,7 +83,7 @@ const ConfirmOrder = () => {
 
             </div> */}
 
-            <div className='flex my-4 text-left max-w-lg justify-between justify'>
+            <div className='flex my-4 text-left max-w- justify-between justify'>
                 <p  className='fl font-medium text-gray-500'>Reference</p>
                 <p>{order?.id}</p>
             </div>

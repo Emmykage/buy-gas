@@ -47,7 +47,7 @@ const PaymentDetails = () => {
     console.log(id, order)
     const componentProps = {
         email: "emmiemenz@gmail.com",
-        amount: order.total_amount ?? 13400 * 100 ,
+        amount: order.total_amount * 100 ,
       
         publicKey: "pk_test_f833f603b86e23ffa37f40f2e90056de9b928bf7",
         text: 'Pay With Card',

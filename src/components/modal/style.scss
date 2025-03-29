@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
     background: rgba(0, 0, 0, 0.527);
-    z-index: 100000;
+    z-index: 9999999;
 
     &.open{
         opacity: 1;

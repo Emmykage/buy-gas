@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { NavLink, Outlet } from 'react-router-dom'
-import { TiThMenuOutline } from 'react-icons/ti'
+import { TiTags, TiThMenuOutline } from 'react-icons/ti'
 import { LuLayoutDashboard } from 'react-icons/lu'
-import { CiLogout } from 'react-icons/ci'
+import { CiLogout, CiUser } from 'react-icons/ci'
+import { TbTruckDelivery } from "react-icons/tb";
 
 const AdminDashboard = (props) => {
     
@@ -24,7 +25,7 @@ const AdminDashboard = (props) => {
                 <li className='rounded font-medium cursor-pointer  bg-blue-80  text-left text-gray-600'>
                     <NavLink to="/admin/home" className={({isActive}) => (isActive ? active : inActive)}>
                        <LuLayoutDashboard className='text-2xl'/>
-                        <span> Home </span>                    
+                        <span  className='sm:block hidden '> Home </span>                    
 
                     </NavLink>
                 </li>
@@ -35,21 +36,27 @@ const AdminDashboard = (props) => {
                 <li className='rounded my-2 font-medium cursor-pointer'>
                     <NavLink to="/admin/users" className={({isActive}) => (isActive ? active : inActive)}>
                     
-                    <LuLayoutDashboard className='text-2xl'/>
-                    Users </NavLink>
+                    <CiUser className='text-2xl'/>
+                    <span  className='sm:block hidden '> Users </span>                    
+
+                     </NavLink>
                     
                 </li>
                 <li className=' rounded font-medium cursor-pointer'>
                     <NavLink  to="/admin/orders" className={({isActive}) => (isActive ? active : inActive)}>  
-                        <LuLayoutDashboard className='text-2xl'/>
-                        Orders     
+                        <TiTags className='text-2xl'/>
+                        <span  className='sm:block hidden '> Orders </span>                    
+
+                             
                     </NavLink>
                     
                 </li>   
                 <li className=' rounded font-medium cursor-pointer'>
                     <NavLink  to="/admin/agents" className={({isActive}) => (isActive ? active : inActive)}>  
-                        <LuLayoutDashboard className='text-2xl'/>
-                        Agents     
+                        <TbTruckDelivery className='text-2xl'/>
+                        <span  className='sm:block hidden '> Agents </span>                    
+
+                             
                     </NavLink>
                     
                 </li>
@@ -57,7 +64,9 @@ const AdminDashboard = (props) => {
                 <li className='my-2 rounded font-medium cursor-pointer'>
                     <NavLink  to="/auth/admin-login" className={({isActive}) => (isActive ? active : inActive)}>  
                     <CiLogout className='text-2xl'/>
-                        Log Out
+                    <span  className='sm:block hidden '>  Log Out </span>                    
+
+                       
                     </NavLink>
                     
                 </li>

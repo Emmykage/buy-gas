@@ -5,6 +5,7 @@ import { getOrder, updateOrder } from '../../../redux/actions/order';
 import dateFormater from '../../../utils/dateFormatter';
 import Loader from '../../../components/loader/Loader';
 import { nairaFormat } from '../../../utils/nairaFormat';
+import { FaArrowLeft } from "react-icons/fa";
 
 const ShowOrder = ({ orderProp, isActive }) => {
     const { id } = useParams();
@@ -14,7 +15,7 @@ const ShowOrder = ({ orderProp, isActive }) => {
     const [openAccept, setOpenAccept] = useState(false);
     const [openDecline, setOpenDecline] = useState(false);
     const { order, loading } = useSelector((state) => state.order);
-  
+    console.log(id)
     const handleUpdate = (status) => {
       dispatch(updateOrder({ id, status }))
         .then((result) => {
@@ -30,6 +31,8 @@ const ShowOrder = ({ orderProp, isActive }) => {
       dispatch(getOrder(id));
     }, [id]);
   
+
+    console.log(order, id)
     // useEffect(() => {
     //   const observer = new IntersectionObserver(([entry]) => {
     //     if (entry.isIntersecting && !order?.viewed) {
@@ -55,8 +58,9 @@ const ShowOrder = ({ orderProp, isActive }) => {
     <div className="bg-white p-6" ref={contRef}>
 
     <div className="flex">
-      <span onClick={() => navigate(-1)} className="mr-4 border cursor-pointer border-gray-400 h-10 shadow w-12 rounded flex justify-center items-center">r
-        {/* <MdOutlineKeyboardBackspace className="text-2xl" /> */}
+      <span onClick={() => navigate(-1)} className="mr-4 border cursor-pointer border-gray-400 h-10 shadow w-12 rounded flex justify-center items-center">
+
+        <FaArrowLeft className="text-lg" />
         </span>
       <div>
         <p className="text-green-700 text-xs">Order/Order details</p>
@@ -74,9 +78,9 @@ const ShowOrder = ({ orderProp, isActive }) => {
 
           <p className="text-2xl my-3 text-gray-800 font-semibold">
             Order #
-            {order?.invoice_number}
+            {order?.id}
           </p>
-          {order?.status == 'pending' ? <span className="bg-orange-200 px-4 py-1 text-orange-800 font-medium rounded"> awaiting confirmation</span> : order?.status == 'declined' ? <span className="bg-red-200 px-4 py-1 text-red-800 font-medium rounded">Order Rejected </span> : <span className="bg-blue-200 px-4 py-1 text-blue-800 font-medium rounded"> Ready to ship</span>}
+          {order?.status == 'initiatialize' ? <span className="bg-orange-200 px-4 py-1 text-orange-800 font-medium rounded"> awaiting confirmation</span> : order?.status == 'declined' ? <span className="bg-red-200 px-4 py-1 text-red-800 font-medium rounded">Order Rejected </span> : <span className="bg-blue-200 px-4 py-1 text-blue-800 font-medium rounded"> Ready to ship</span>}
           <div className="flex flex-col md:flex-row gap-7 my-5">
 
             <span className="bg-gray-300 px-2 py-1 rounded-lg text-xs">
@@ -84,12 +88,10 @@ const ShowOrder = ({ orderProp, isActive }) => {
               {' '}
               {dateFormater(order?.created_at)}
             </span>
-            <span className="bg-gray-300 px-2 py-1 rounded-lg text-xs">
-              paid on: 2024-02-13
+            <span className="bg-gray-300 px-2 py-2.5 rounded-lg text-xs">
+              paid on: {dateFormater(order?.updated_at)}
             </span>
-            <span className="bg-gray-300 px-2 py-1 rounded-lg text-xs">
-              paid on: 2024-02-13
-            </span>
+           
 
           </div>
         </div>
@@ -117,66 +119,44 @@ const ShowOrder = ({ orderProp, isActive }) => {
 
         </div>
         <div>
-          <div className="flex flex-col md:flex-row justify-between">
-            <span className="flex-1 font-medium">Name:</span>
-            <span className="flex-1">{order?.billing_address?.name}</span>
-          </div>
-          <div className="flex flex-col md:flex-row flex-wrap justify-between gap-1 my-2">
-            <span className="flex-1 font-semibold  text-gray-600">Email:</span>
-            <span className="flex-1  ">
-              {' '}
-              {order?.billing_address?.email}
-            </span>
-          </div>
+          
+         
           <div className="flex justify-between my-2  text-gray-500 flex-col md:flex-row">
             <span className="flex-1 font-semibold  text-gray-600">Phone:</span>
-            <span className="flex-1">{order?.billing_address?.phone_no}</span>
+            <span className="flex-1">{order?.phone}</span>
           </div>
           <div className="flex flex-col md:flex-row justify-between my-2">
             <span className="flex-1 font-semibold  text-gray-600">Payment Method:</span>
             <span className="flex-1 uppercase">
-              {' '}
-              {order?.payment_method}
+              {' '}Card
             </span>
           </div>
-          <div className="flex justify-between flex-col md:flex-row my-2">
-            <span className="flex-1 flex-col md:flex-row font-semibold text-gray-600">Delivery Method:</span>
-            <span className="flex-1"> Shipping</span>
+         
+        </div>
+
+      </div>
+      <div className="border rounded-lg p-4 border-gray-300">
+        <div className="flex justify-between">
+          <p className="text-sm font-semibold text-gray-700">SHIPPING ADDRESS</p>
+          <button onClick={() => {}}>Edit</button>
+
+        </div>
+        <div>
+          {order?.address}
+          {' '}
+          {order?.billing_address?.city}
+          {' '}
+          {order?.billing_address?.atate}
+        </div>
+        <div className="flex flex-col md:flex-row justify-between my-2">
+            <span className="flex-1 font-semibold  text-gray-600">Location:</span>
+            <span className="flex-1 uppercase">
+              {' '}{order?.location}
+            </span>
           </div>
-        </div>
 
       </div>
-      <div className="border rounded-lg p-4 border-gray-300">
-        <div className="flex justify-between">
-          <p className="text-sm font-semibold text-gray-700">SHIPPING ADDRESS</p>
-          <button onClick={() => {}}>Edit</button>
-
-        </div>
-        <div>
-          {order?.billing_address?.street}
-          {' '}
-          {order?.billing_address?.city}
-          {' '}
-          {order?.billing_address?.atate}
-        </div>
-
-      </div>
-      <div className="border rounded-lg p-4 border-gray-300">
-        <div className="flex justify-between">
-          <p className="text-sm font-semibold text-gray-700">SHIPPING ADDRESS</p>
-          <button onClick={() => {}}>Edit</button>
-
-        </div>
-        <div>
-          {order?.billing_address?.street}
-          {' '}
-          {order?.billing_address?.city}
-          {' '}
-          {order?.billing_address?.atate}
-
-        </div>
-
-      </div>
+  
     </div>
 
     <div className="my-8">
@@ -184,56 +164,61 @@ const ShowOrder = ({ orderProp, isActive }) => {
         <p className="font-semibold text-sm">Items Ordered</p>
         <button>Edit</button>
       </div>
-      <div className=" overflow-x-auto bg-red-400 no-scroll">
+      <div className=" overflow-x-auto bg- no-scroll">
 
         {loading ? <Loader />
           : (
-            <table className="my-4 w-full">
+            <table className="min-w-full  border border-gray-200 rounded-md border-separate border-spacing-0 table-auto overflow-hidden">
               <thead>
                 <tr>
                   <th />
-                  <th>Item Name</th>
-                  <th>SKU</th>
-                  <th>Code</th>
-                  <th>Quantity</th>
-                  <th>price</th>
-                  <th>total</th>
+                  <th scope="col" className="sticky top-0  z-10 border-b border-gray-200/50 bg- bg-opacity-75 px-3 py-3.5 pr-3 text-left text-xs font-semibold text-gray-900  backdrop-blur backdrop-filter sm:pl-6 lg:pl-8">Quantity</th>
+                  <th scope="col" className="sticky top-0  z-10 border-b border-gray-200/50 bg- bg-opacity-75 px-3 py-3.5 pr-3 text-left text-xs font-semibold text-gray-900  backdrop-blur backdrop-filter sm:pl-6 lg:pl-8">Phone</th>
+                  <th scope="col" className="sticky top-0  z-10 border-b border-gray-200/50 bg- bg-opacity-75 px-3 py-3.5 pr-3 text-left text-xs font-semibold text-gray-900  backdrop-blur backdrop-filter sm:pl-6 lg:pl-8">Amount</th>
+                  <th scope="col" className="sticky top-0  z-10 border-b border-gray-200/50 bg- bg-opacity-75 px-3 py-3.5 pr-3 text-left text-xs font-semibold text-gray-900  backdrop-blur backdrop-filter sm:pl-6 lg:pl-8">total</th>
 
                 </tr>
               </thead>
               <tbody>
-                {order?.order_items?.map((item) => (
-                  <tr key={item.id}>
-                    <td>
-                      {' '}
-                      <img src={item.photo_url} alt={item.product.name} className="w-20 h-20" />
-                    </td>
-                    <td>{item.product.name}</td>
-                    <td>{item.product.sku}</td>
+                  <tr key={order.id}>
+                    <td className="whitespace-nowrap border-b border-gray-200 py-2 pl-3 pr-3 text-sm font-normal sm:pl-6 lg:pl-8"/>
+                  
+                    <td className="whitespace-nowrap border-b border-gray-200 py-2 pl-3 pr-3 text-sm font-normal sm:pl-6 lg:pl-8">{order.quantity}</td>
+                    <td className="whitespace-nowrap border-b border-gray-200 py-2 pl-3 pr-3 text-sm font-normal sm:pl-6 lg:pl-8">{order.phone}</td>
+                    <td className="whitespace-nowrap border-b border-gray-200 py-2 pl-3 pr-3 text-sm font-normal sm:pl-6 lg:pl-8">{ nairaFormat(order.amount)}</td>
                     {/* <td>{item.billing_address.city}</td> */}
-                    <td>{item.product.ms_code}</td>
-                    <td>{item.quantity}</td>
-                    <td className="font-semibold text-gray-500">{nairaFormat(item.amount)}</td>
-                    <td className="text-gray-600 font-semibold">{nairaFormat(item.amount * item.quantity)}</td>
-
+                    <td className="whitespace-nowrap border-b border-gray-200 py-2 pl-3 pr-3 text-sm font-normal sm:pl-6 lg:pl-8">{nairaFormat(order.amount)}</td>
+                 
                   </tr>
 
-                ))}
-                <tr>
+                  <tr>
                   <td>
                     {' '}
-                    <span>Shipping</span>
+                    <span>Delivery Fee</span>
                   </td>
                   <td />
 
                   <td />
+                  {' '}
+                  <td />
+                  <td className="whitespace-nowrap border-b border-gray-200 py-2 pl-3 pr-3 text-sm font-normal sm:pl-6 lg:pl-8">
+                    {' '}
+                    <span>{nairaFormat(order?.delivery_fee ?? 0)}</span>
+                  </td>
+
+                </tr><tr>
+                  <td className='py-2 border-b border-gray-300/50'>
+                    {' '}
+                    <span>Service Charge</span>
+                  </td>
+                  <td />
+
                   <td />
                   {' '}
                   <td />
-                  <td />
-                  <td>
+                  <td className="whitespace-nowrap border-b border-gray-200 py-2 pl-3 pr-3 text-sm font-normal sm:pl-6 lg:pl-8">
                     {' '}
-                    <span>{nairaFormat(order?.delivery_fee ?? 0)}</span>
+                    <span>{nairaFormat(order?.service_charge ?? 0)}</span>
                   </td>
 
                 </tr>
@@ -243,15 +228,13 @@ const ShowOrder = ({ orderProp, isActive }) => {
                     <span>Total</span>
                   </td>
                   <td />
-                  <td />
 
                   <td />
                   {' '}
                   <td />
-                  <td />
-                  <td>
+                  <td className="whitespace-nowrap border-b border-gray-200 py-2 pl-3 pr-3 text-sm font-normal sm:pl-6 lg:pl-8">
                     {' '}
-                    <span className="text-xl font-bold text-gray-800">{ nairaFormat(parseInt(order?.net_total))}</span>
+                    <span className="text-xl font-bold text-gray-800">{ nairaFormat(parseInt(order?.total_amount))}</span>
                   </td>
 
                 </tr>
@@ -262,7 +245,10 @@ const ShowOrder = ({ orderProp, isActive }) => {
       </div>
 
       <div>
+        <p className='text-sm font-semibold'>
         Currency NGN
+        </p>
+         
       </div>
 
     </div>

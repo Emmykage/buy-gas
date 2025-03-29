@@ -78,7 +78,7 @@ export const getOrder = createAsyncThunk("order/get-order", async( id, {rejectWi
 
 export const getOrders = createAsyncThunk("order/get-orders", async( _, {rejectWithValue})=> {
     try {
-        const response = await axios.post(baseUrl+apiRoute + "orders", {
+        const response = await axios.get(baseUrl+apiRoute + "orders", {
             headers: {
                 "Authorization": `Bearer ${fetchToken()}`
             },

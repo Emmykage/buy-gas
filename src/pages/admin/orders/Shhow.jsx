@@ -6,33 +6,37 @@ import dateFormater from '../../../utils/dateFormatter';
 import Loader from '../../../components/loader/Loader';
 import { nairaFormat } from '../../../utils/nairaFormat';
 import { FaArrowLeft } from "react-icons/fa";
+import FormInput from '../../../components/input/Input';
+import { getAgents } from '../../../redux/actions/users';
+import { Form } from 'antd';
+import { useWatch } from 'antd/es/form/Form';
 
-const ShowOrder = ({ orderProp, isActive }) => {
+const ShowOrder = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const contRef = useRef();
-    const [openAccept, setOpenAccept] = useState(false);
-    const [openDecline, setOpenDecline] = useState(false);
+    const [form] = Form.useForm()
     const { order, loading } = useSelector((state) => state.order);
-    console.log(id)
-    const handleUpdate = (status) => {
-      dispatch(updateOrder({ id, status }))
-        .then((result) => {
-          if (updateOrder.fulfilled.match(result)) {
-            dispatch(getOrder(id));
-            setOpenDecline(false);
-            setOpenAccept(false);
-          }
-        });
-    };
+    const { agents } = useSelector((state) => state.user);
+    console.log(agents)
+   
+    
   
     useEffect(() => {
       dispatch(getOrder(id));
+              dispatch(getAgents())
+      
     }, [id]);
+
+    useEffect(()=>{
+      form.setFieldsValue({agent: order?.agent_id})
+    },[order])
   
 
-    console.log(order, id)
+    const selectAgent = useWatch("agent", form)
+
+    console.log(selectAgent, agents[0]?.id   )
     // useEffect(() => {
     //   const observer = new IntersectionObserver(([entry]) => {
     //     if (entry.isIntersecting && !order?.viewed) {
@@ -164,7 +168,7 @@ const ShowOrder = ({ orderProp, isActive }) => {
         <p className="font-semibold text-sm">Items Ordered</p>
         <button>Edit</button>
       </div>
-      <div className=" overflow-x-auto bg- no-scroll">
+      <div className=" overflow-x-auto  bg- no-scroll">
 
         {loading ? <Loader />
           : (
@@ -192,7 +196,7 @@ const ShowOrder = ({ orderProp, isActive }) => {
                   </tr>
 
                   <tr>
-                  <td>
+                  <td className="whitespace-nowrap border-gray-200 py-2 pl-3 pr-3 text-sm font-normal sm:pl-6 lg:pl-8">
                     {' '}
                     <span>Delivery Fee</span>
                   </td>
@@ -207,7 +211,7 @@ const ShowOrder = ({ orderProp, isActive }) => {
                   </td>
 
                 </tr><tr>
-                  <td className='py-2 border-b border-gray-300/50'>
+                  <td className="whitespace-nowrap  border-gray-200 py-2 pl-3 pr-3 text-sm font-normal sm:pl-6 lg:pl-8">
                     {' '}
                     <span>Service Charge</span>
                   </td>
@@ -223,7 +227,7 @@ const ShowOrder = ({ orderProp, isActive }) => {
 
                 </tr>
                 <tr>
-                  <td>
+                  <td className="whitespace-nowrap border-b border-gray-200 py-2 pl-3 pr-3 text-sm font-normal sm:pl-6 lg:pl-8">
                     {' '}
                     <span>Total</span>
                   </td>
@@ -255,44 +259,26 @@ const ShowOrder = ({ orderProp, isActive }) => {
     <div className="my-8 overflow-x-auto no-scroll">
       <div className="flex justify-between">
         <p className="font-semibold text-sm">Invoices </p>
-        <button>Add New</button>
+        <div className='max-w-[200px] w-full bg-gray-300 '>
+          <Form  
+          form={form}
+          initialValues={{
+            agent: ""
+          }}>
+
+          <FormInput name={"agent"} placeHolder={"Select Agent"} options={agents?.map(item => (
+            {
+              label:`${ item.first_name } ${ item.first_name }`, value: item.id
+            }
+          ))} type={"select"} />
+
+        </Form>
+
+
+        </div>
       </div>
       <div className=" overflow-x-auto no-scroll">
-        <table className="my-4">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Amount</th>
-              <th>Customer</th>
-              <th>Status</th>
-              <th>Date</th>
-
-            </tr>
-          </thead>
-          <tbody>
-            <tr />
-
-            <tr>
-              <td>Shipping</td>
-              <td />
-              <td />
-              <td />
-
-              <td>--</td>
-            </tr>
-
-            <tr>
-              <td>Total</td>
-              <td />
-              <td />
-              <td />
-              <td>--</td>
-            </tr>
-            <div>
-              Currency NGN
-            </div>
-          </tbody>
-        </table>
+      
       </div>
 
     </div>

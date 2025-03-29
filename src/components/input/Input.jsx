@@ -31,6 +31,7 @@ const FormInput = ({
     placeHolder,
     required=false
 }) => {
+
   return (
     <>
    <Form.Item 
@@ -58,11 +59,11 @@ const FormInput = ({
         type === "text-area" ?
 
 
-<TextArea rows={4}
-          onChange={onChange}
-          disabled={disabled}
-          
-           />
+        <TextArea rows={4}
+                  onChange={onChange}
+                  disabled={disabled}
+                  
+                  />
 
            : 
 
@@ -70,7 +71,8 @@ const FormInput = ({
 
            <Select
            disabled={disabled}
-
+           value={defaultValue}
+           onChange={onChange}
            options={options}
            placeholder={placeHolder}
 

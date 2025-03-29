@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { userLogin } from '../../redux/actions/auth';
+import { adminLogin, userLogin } from '../../redux/actions/auth';
 import { SET_LOADING } from '../../redux/app';
 
 
@@ -27,14 +27,17 @@ const AdminLogin = () => {
     dispatch(SET_LOADING(true))
     const data = new FormData(event.currentTarget);
     const formInput = {
-      user: {
+      admin: {
         email: data.get('email'),
         password: data.get('password'),
       },
     };
-    dispatch(userLogin(formInput)).then(result => {
-      if(userLogin.fulfilled.match(result)){
+    dispatch(adminLogin(formInput)).then(result => {
+      if(adminLogin.fulfilled.match(result)){
         navigate("/admin/home")
+        dispatch(SET_LOADING(false))
+
+      }else{
         dispatch(SET_LOADING(false))
 
       }

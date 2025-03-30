@@ -13,13 +13,8 @@ const HeroForm = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const {statistics} = useSelector(state => state.statistic)
-
-
     const {locations} = useSelector(state => state.location)
-   useEffect(()=> {
-        dispatch(getStatistics())
-  
-      }, [])
+ 
     
       const handleSubmit = (values) => {
         dispatch(SET_LOADING(true))
@@ -42,10 +37,11 @@ const HeroForm = () => {
       }
 
       useEffect(()=> {
+        dispatch(getStatistics())  
         dispatch(getLocations())
+
       }, [])
 
-      console.log(statistics)
   return (
     <div className='bg-gray-0 w-full md:my-0 m-auto heroform px-5 md:px-10 py-10 max-w-3xl text-black text-center text-sm'>
         <p className=' my-10 text-4xl text-theme font-semibold'>Gas <span className='text-primary'>Waka</span> </p>

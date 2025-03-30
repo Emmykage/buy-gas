@@ -26,8 +26,10 @@ export const creategasPrice = createAsyncThunk("statistics/create-prices", async
    
 })
 export const getStatistics = createAsyncThunk("stat/get-statistics", async(_, {rejectWithValue})=> {
-    
+    console.log("fetch stat")
+
     try {
+        console.log(":try fetch")
         const response = await axios.get(`${baseUrl + apiRoute}statistics`,  {
             headers: {
                 "Authorization": `Bearer ${fetchToken()}`
@@ -39,6 +41,7 @@ export const getStatistics = createAsyncThunk("stat/get-statistics", async(_, {r
 
         return data 
     } catch (error) {
+        console.log(error)
         if(error?.response){
             return rejectWithValue({message: error.response.data.message ?? "Failed to create"})
         }

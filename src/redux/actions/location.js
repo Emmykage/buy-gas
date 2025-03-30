@@ -54,7 +54,8 @@ export const updateLocation = createAsyncThunk("location/update-location", async
 
 
 export const getLocations = createAsyncThunk("location/get-locations", async(_, {rejectWithValue})=> {
-    
+
+    console.log("Fetching from:", baseUrl + apiRoute + "locations"), fetchToken();
     try {
         const response = await axios.get(baseUrl + apiRoute + "/locations",  {
             headers: {
@@ -63,11 +64,13 @@ export const getLocations = createAsyncThunk("location/get-locations", async(_, 
     
         })
 
+        console.log(response)
         const data = response.data
 
 
         return data 
     } catch (error) {
+        console.log(error)
         if(error?.response){
             return rejectWithValue({message: error.response.data.message ?? "Failed to get"})
         }

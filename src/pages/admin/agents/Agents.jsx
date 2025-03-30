@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import AppModal from '../../../components/modal/Modal'
 import { Button, Form } from 'antd'
 import FormInput from '../../../components/input/Input';
@@ -139,7 +139,7 @@ console.log(agents)
 
       
         <Form.Item label={null}>
-            <Button loading={loading} htmlType="submit" className="border-alt m-auto block w-full h-20 bg-primary text-white rounded-lg  border shadow-md font-medium text-xl" type="primary" htmlType="submit">
+            <Button loading={loading} htmlType="submit" className="border-alt m-auto block w-full h-20 bg-primary text-white rounded-lg  border shadow-md font-medium text-xl" type="primary">
                 Create Agent
             </Button>
 

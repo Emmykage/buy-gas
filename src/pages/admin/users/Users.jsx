@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import AppModal from '../../../components/modal/Modal'
 import { Button, Form } from 'antd'
 import FormInput from '../../../components/input/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_LOADING } from '../../../redux/app';
 import { toast } from 'react-toastify';
-import { createAgent, getAgents, getUsers } from '../../../redux/actions/users';
+import { createAgent, getUsers } from '../../../redux/actions/users';
 
 const AdminUsers = () => {
     const [form] = Form.useForm();

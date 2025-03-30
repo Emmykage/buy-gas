@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import AppButton from '../../../components/button/Button'
 import { createLocations, getLocations } from '../../../redux/actions/location'
 import { Button, Form, Spin } from 'antd'
 import AppModal from '../../../components/modal/Modal'

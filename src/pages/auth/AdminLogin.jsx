@@ -1,25 +1,25 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { adminLogin, userLogin } from '../../redux/actions/auth';
+import { useDispatch } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { adminLogin } from '../../redux/actions/auth';
 import { SET_LOADING } from '../../redux/app';
 
 
 
 const AdminLogin = () => {
-  const [seePassword, setSeePassword] = useState(false);
-  const location = useLocation();
   const navigate = useNavigate()
-
-  const [show, setShow] = useState(true);
-
-  const navigation = useNavigate();
   const dispatch = useDispatch();
 
-  const handleRedirect = () => {
-    localStorage.setItem('meli_auth', '');
-    navigate('/auth/login');
-  };
+  // const [seePassword, setSeePassword] = useState(false);
+  // const location = useLocation();
+
+  // const [show, setShow] = useState(true);
+
+  // const navigation = useNavigate();
+
+  // const handleRedirect = () => {
+  //   localStorage.setItem('meli_auth', '');
+  //   navigate('/auth/login');
+  // };
 
   const handleSubmit = (event) => {
     event.preventDefault();

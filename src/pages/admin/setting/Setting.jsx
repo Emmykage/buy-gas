@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AppButton from '../../../components/button/Button'
 import {  getLocations } from '../../../redux/actions/location'
-import { Button, Form, Spin } from 'antd'
+import { Button, Form } from 'antd'
 import AppModal from '../../../components/modal/Modal'
 import FormInput from '../../../components/input/Input'
 import { SET_LOADING } from '../../../redux/app'
 import { getStatistics, updateGasPrice } from '../../../redux/actions/statistics'
 import { nairaFormat } from '../../../utils/nairaFormat'
 import { toast } from 'react-toastify'
-import Loader from '../../../components/loader/Loader'
 import SpinLoader from '../../../components/loader/SpinLoader'
 
 const Settings = () => {

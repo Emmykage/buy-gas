@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getOrder, updateOrder } from '../../../redux/actions/order';
@@ -9,7 +9,8 @@ import { FaArrowLeft } from "react-icons/fa";
 import FormInput from '../../../components/input/Input';
 import { getAgents } from '../../../redux/actions/users';
 import { Form } from 'antd';
-import { useWatch } from 'antd/es/form/Form';
+import { SET_LOADING } from '../../../redux/app';
+import { toast } from 'react-toastify';
 
 const ShowOrder = () => {
     const { id } = useParams();
@@ -19,8 +20,28 @@ const ShowOrder = () => {
     const [form] = Form.useForm()
     const { order, loading } = useSelector((state) => state.order);
     const { agents } = useSelector((state) => state.user);
-    console.log(agents)
-   
+
+    
+    
+        const handleUpdate = (values) => {
+            dispatch(SET_LOADING(true))
+            console.log({id, order: {agent_id: values}})
+            dispatch(updateOrder({id, order: {agent_id: values}})).then(result => {
+                if(updateOrder.fulfilled.match(result)){
+                    dispatch(getOrder(id))
+                    dispatch(SET_LOADING(false))
+                    toast(result.payload.message || "Delivery Agent Assigned", {type: "success"})
+    
+                }
+                else{
+                    dispatch(SET_LOADING(false))
+                    toast(result.payload.message || "failed to assign agent", {type: "error"})
+    
+    
+                }
+            })
+    
+        }
     
   
     useEffect(() => {
@@ -34,30 +55,6 @@ const ShowOrder = () => {
     },[order])
   
 
-    const selectAgent = useWatch("agent", form)
-
-    console.log(selectAgent, agents[0]?.id   )
-    // useEffect(() => {
-    //   const observer = new IntersectionObserver(([entry]) => {
-    //     if (entry.isIntersecting && !order?.viewed) {
-    //       dispatch(updateOrder({ id, data: { viewed: true } })).then((result) => {
-    //         if (updateOrder.fulfilled.match(result)) {
-    //           dispatch(getStatistics());
-    //         }
-    //       });
-    //       observer.unobserve(entry.target);
-    //     }
-    //   }, { threshold: 0.5 });
-  
-    //   if (contRef.current) {
-    //     observer.observe(contRef.current);
-    //   }
-    //   return () => {
-    //     if (contRef.current) {
-    //       observer.unobserve(contRef.current);
-    //     }
-    //   };
-    // }, [order?.viewed]);
   return (
     <div className="bg-white p-6" ref={contRef}>
 
@@ -248,7 +245,7 @@ const ShowOrder = () => {
 
       </div>
 
-      <div>
+      <div className='mt-6'>
         <p className='text-sm font-semibold'>
         Currency NGN
         </p>
@@ -258,7 +255,7 @@ const ShowOrder = () => {
     </div>
     <div className="my-8 overflow-x-auto no-scroll">
       <div className="flex justify-between">
-        <p className="font-semibold text-sm">Invoices </p>
+        <p className="font-semibold text-gray-600 text-sm">Assign Agent </p>
         <div className='max-w-[200px] w-full bg-gray-300 '>
           <Form  
           form={form}
@@ -266,7 +263,7 @@ const ShowOrder = () => {
             agent: ""
           }}>
 
-          <FormInput name={"agent"} placeHolder={"Select Agent"} options={agents?.map(item => (
+          <FormInput name={"agent"} placeHolder={"Select Agent"} onChange={handleUpdate} options={agents?.map(item => (
             {
               label:`${ item.first_name } ${ item.first_name }`, value: item.id
             }

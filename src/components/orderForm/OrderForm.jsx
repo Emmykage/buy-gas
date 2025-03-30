@@ -8,16 +8,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import "./style.scss"
 import { createOrder } from '../../redux/actions/order'
 import { SET_LOADING } from '../../redux/app'
+import { getStatistics } from '../../redux/actions/statistics'
 const OrderForm = ({
     handleNext
 }) => {
     const navigate = useNavigate()
     const [query] = useSearchParams()
+    const {statistics} = useSelector(state => state.statistic)
     const [form] = Form.useForm();
     const [amount, setAmount] = useState(0)
     const {user} = useSelector(state => state.auth)
     const kg = query.get("kg")
-    const rate = 1300
+
+    const [rate, setRate] = useState(0)
     const dispatch = useDispatch()
 
     const [selected, setSelected] = useState(null)
@@ -58,6 +61,20 @@ const OrderForm = ({
       })
 
     }, [user])
+
+
+    useEffect(()=> {
+      dispatch(getStatistics())
+
+    }, [])
+
+    
+    useEffect(()=> {
+      setRate(statistics.gas_price ?? 0)
+
+    }, [statistics])
+
+    console.log(statistics.gas_price)
   return (
 <Form
 className='order-form'

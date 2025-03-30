@@ -5,7 +5,7 @@ import { fetchToken } from "../../hooks/localStorage";
 import { toast } from "react-toastify";
 
 export const createOrder = createAsyncThunk("create-order/create-order", async( dataValue, {rejectWithValue})=> {
-    console.log("first", dataValue)
+
     try {
         const response = await axios.post(baseUrl+apiRoute + "orders", dataValue, {
             headers: {
@@ -29,21 +29,21 @@ export const createOrder = createAsyncThunk("create-order/create-order", async( 
     }
 })
 
-export const updateOrder = createAsyncThunk("order/update-order", async( {id, data}, {rejectWithValue})=> {
+export const updateOrder = createAsyncThunk("order/update-order", async( {id, order}, {rejectWithValue})=> {
     try {
-        const response = await axios.patch(`${baseUrl+apiRoute}orders/${id}`, data , {
+        const response = await axios.patch(`${baseUrl+apiRoute}orders/${id}`, order , {
             headers: {
                 "Authorization": `Bearer ${fetchToken()}`
             },
         })
 
-        const {data} = response.data 
+        const data = response.data 
         console.log(data)
         return data
     } catch (error) {
         console.log(error?.response)
         if(error.response){
-            toast(error.response.data.message ?? error.response.statusText ?? "Errror found", {type: "error"})
+            // toast(error.response.data.message ?? error.response.statusText ?? "Errror found", {type: "error"})
             return rejectWithValue({message: error.response.data.message})
 
         }
@@ -85,7 +85,7 @@ export const getOrders = createAsyncThunk("order/get-orders", async( _, {rejectW
         })
 
         const {data} = response.data 
-        console.log(data)
+
         return data
     } catch (error) {
         console.log(error?.response)

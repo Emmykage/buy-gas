@@ -20,6 +20,8 @@ import Loader from './components/loader/Loader'
 import { useSelector } from 'react-redux'
 import ShowOrder from './pages/admin/orders/Shhow'
 import AdminAgents from './pages/admin/agents/Agents'
+import Settings from './pages/admin/setting/Setting'
+import Locations from './pages/admin/delivery/Locations'
 
 
 function App() {
@@ -54,11 +56,13 @@ function App() {
         
 
         <Route path='/admin' element={<AdminDashboard/>}>
-        <Route path='home' element={<AdminHome/>}/>
-        <Route path='orders' element={<AdminOrder/>}/>
-        <Route path='orders/:id' element={<ShowOrder/>}/>
-        <Route path='users' element={<AdminUser/>}/>
-        <Route path='agents' element={<AdminAgents/>}/>
+          <Route path='home' element={<AdminHome/>}/>
+          <Route path='orders' element={<AdminOrder/>}/>
+          <Route path='orders/:id' element={<ShowOrder/>}/>
+          <Route path='users' element={<AdminUser/>}/>
+          <Route path='agents' element={<AdminAgents/>}/>
+          <Route path='setting' element={<Settings/>}/>
+          <Route path='locations' element={<Locations/>}/>
 
         </Route>
 

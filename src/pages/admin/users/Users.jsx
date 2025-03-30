@@ -133,7 +133,7 @@ console.log(users)
 
       
         <Form.Item label={null}>
-            <Button loading={loading} htmlType="submit" className="border-alt m-auto block w-full h-20 bg-primary text-white rounded-lg  border shadow-md font-medium text-xl" type="primary" htmlType="submit">
+            <Button loading={loading} htmlType="submit" className="border-alt m-auto block w-full h-20 bg-primary text-white rounded-lg  border shadow-md font-medium text-xl" type="primary" >
                 Create Agent
             </Button>
 

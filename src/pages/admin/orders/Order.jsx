@@ -4,9 +4,8 @@ import { NavLink } from "react-router-dom"
 import { getOrders } from "../../../redux/actions/order"
 
 const AdminOrder = () => {
-    const {orders, loading } = useSelector(state => state.order)
+    const {orders } = useSelector(state => state.order)
     const dispatch = useDispatch()
-    const [isOpen, setOpen] = useState()
 console.log(orders)
     useEffect(()=> {
         dispatch(getOrders())

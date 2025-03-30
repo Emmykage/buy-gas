@@ -1,13 +1,18 @@
 import { Button, Form } from 'antd'
 import FormInput from '../input/Input'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { SET_LOADING, SET_LOGIN } from '../../redux/app'
 import { userLogin } from '../../redux/actions/auth'
+import { useEffect } from 'react'
+import { getLocations } from '../../redux/actions/location'
 
 const HeroForm = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+
+    const {locations} = useSelector(state => state.location)
   
     
       const handleSubmit = (values) => {
@@ -29,6 +34,10 @@ const HeroForm = () => {
     
     
       }
+
+      useEffect(()=> {
+        dispatch(getLocations())
+      }, [])
   return (
     <div className='bg-gray-0 w-full md:my-0 m-auto heroform px-5 md:px-10 py-10 max-w-3xl text-black text-center text-sm'>
         <p className=' my-10 text-4xl text-theme font-semibold'>Gas <span className='text-primary'>Waka</span> </p>
@@ -64,12 +73,9 @@ const HeroForm = () => {
         required={true}
         name={"location"}
         placeHolder={"Select Location"} 
-        type={"select"} options={[{label: "Wuse", value: "wuse"},
-          {label: "Maitama", value: "maitama"},
-          {label: "Apo", value: "apo"},
-          {label: "Gwarimpa", value: "gwarimpa"},
-          {label: "Asokoro", value: "asokoro"}
-        ]}/>
+        type={"select"} options={locations.map(item => ({
+          label: item?.area?.toUpperCase() , value: item.area
+        }))}/>
 
 <Button htmlType='submit' className='bg-theme'>
     Buy Gas

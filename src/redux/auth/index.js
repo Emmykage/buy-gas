@@ -45,7 +45,7 @@ const AuthSlice = createSlice({
 
             return{
                 ...state,
-                // message: action.payload.message,
+                message: action.payload.message,
                 loading: false
             }
         })

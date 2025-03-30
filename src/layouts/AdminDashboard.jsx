@@ -1,20 +1,25 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import { useEffect, useState } from 'react'
+
 import { NavLink, Outlet } from 'react-router-dom'
 import { TiTags, TiThMenuOutline } from 'react-icons/ti'
 import { LuLayoutDashboard } from 'react-icons/lu'
 import { CiLogout, CiUser } from 'react-icons/ci'
 import { TbTruckDelivery } from "react-icons/tb";
+import { useDispatch } from 'react-redux'
+import { getStatistics } from '../redux/actions/statistics'
+import { FaMapLocation } from "react-icons/fa6";
+import { FiSettings } from "react-icons/fi";
 
-const AdminDashboard = (props) => {
-    
+const AdminDashboard = () => {
+    const dispatch = useDispatch()
     const [showMenu, setShowMenu] = useState(false)
-    const [navBg, setNavBg] = useState("")
-    const [toggleNav, setToggleNave] = useState(true)
     
     const active = "bg-gray-100 flex item-center gap-4 h-full py-4 px-2 text-alt"
     const inActive = " flex item-center gap-4 h-full py-4 px-2 text-alt/80"
 
+    useEffect(()=> {
+        dispatch(getStatistics())
+    },[])
   return (
     <div className='flex h-screen overflow-hidden'>
         <aside className={`${showMenu ? "w-0" :  "md:w-80 w-20"} shrink-0 transition-all duration-200 ease-in-out h-screen border overflow-hidden border-alt/40`}>
@@ -60,6 +65,27 @@ const AdminDashboard = (props) => {
                     </NavLink>
                     
                 </li>
+                <li className=' rounded font-medium cursor-pointer'>
+                    <NavLink  to="/admin/locations" className={({isActive}) => (isActive ? active : inActive)}>  
+                        <FaMapLocation className='text-2xl'/>
+                        <span  className='sm:block hidden '> Locations </span>                    
+
+                             
+                    </NavLink>
+                    
+                </li>
+
+                <li className=' rounded font-medium cursor-pointer'>
+                    <NavLink  to="/admin/setting" className={({isActive}) => (isActive ? active : inActive)}>  
+                        <FiSettings className='text-2xl'/>
+                        <span  className='sm:block hidden '> Settings </span>                    
+
+                             
+                    </NavLink>
+                    
+                </li>
+               
+
 
                 <li className='my-2 rounded font-medium cursor-pointer'>
                     <NavLink  to="/auth/admin-login" className={({isActive}) => (isActive ? active : inActive)}>  

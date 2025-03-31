@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 import { apiRoute, baseUrl } from "../baseUrl"
-import { fetchToken } from "../../hooks/localStorage"
+import { fetchToken, setToken } from "../../hooks/localStorage"
 import { toast } from "react-toastify"
 
 const userSignUp = createAsyncThunk("sign-up/user-signUp", async(data, {rejectWithValue}) => {
@@ -85,7 +85,6 @@ export const userProfile = createAsyncThunk("auth/user-profile", async(data, {re
       }})
 
         const result =  response.data
-        console.log(result)
 
         return result
     } catch (error) {
@@ -107,10 +106,9 @@ const userLogin = createAsyncThunk("login/user-login", async(data, {rejectWithVa
 
         const result = response.data;
 
-        console.log(result)
+        console.log(result.token)
 
-       
-        localStorage.setItem("gaswaka", JSON.stringify(result.token));
+        setToken(result.token)
         toast(result?.message || "Logged In", {type: "success"})
 
 

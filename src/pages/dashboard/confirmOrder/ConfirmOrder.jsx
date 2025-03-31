@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { NavLink, useNavigate, useSearchParams } from 'react-router-dom'
+import { NavLink, useSearchParams } from 'react-router-dom'
 import { nairaFormat } from '../../../utils/nairaFormat'
 import { useReactToPrint } from 'react-to-print'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,7 +9,6 @@ import dateFormater from '../../../utils/dateFormatter'
 const ConfirmOrder = () => {
     const dispatch= useDispatch()
 
-    const navigate = useNavigate()
     const [queryParam] = useSearchParams()
 
 
@@ -83,14 +82,14 @@ const ConfirmOrder = () => {
 
             </div> */}
 
-            <div className='flex my-4 text-left max-w- justify-between justify'>
-                <p  className='fl font-medium text-gray-500'>Reference</p>
+            <div className='flex my-4 gap-10 md:gap-10 text-left max-w- justify-between justify'>
+                <p  className='fl font-medium text-gray-500 text-right'>Reference</p>
                 <p>{order?.id}</p>
             </div>
 
-            <div className='flex my-4 text-left  max-w-lg justify-between justify'>
+            <div className='flex my-4 text-left  justify-between justify'>
                 <p  className='fle font-medium text-gray-500'>Paid At</p>
-                <p>{ dateFormater(order?.created_at ?? "24-10-2026") }</p>
+                <p className='text-right'>{ dateFormater(order?.created_at ?? "24-10-2026") }</p>
             </div>
             </div>
 

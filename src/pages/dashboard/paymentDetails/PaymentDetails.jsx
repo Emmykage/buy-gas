@@ -80,7 +80,7 @@ const PaymentDetails = () => {
                     </div>
                     <div className='flex gap-5 -gray-300  my-4'>
                         <p className='flex-1 font-medium text-gray-700 text-left'>Delivery Time</p>
-                        <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{order?.delivery_time ?? "N/A"} hours</p>
+                        <p className='flex-1 text-gray-800 font-medium text-sm text-right'>{order?.deliver_time ?? "N/A"} hours</p>
                     </div>
                     <div className='flex gap-5 border-b-gray-300 my-4'>
                         <p className=' font-medium text-gray-700 text-left'>Address</p>
